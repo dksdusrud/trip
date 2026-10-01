@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>리장·샹그릴라·쿤밍 10.7–10.12 여행 가이드</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EAEFF0; --paper:#FFFFFF; --ink:#1C2B33; --sub:#56656D; --line:#D3DCDF;
+  --glacier:#2D6E8E; --glacier-soft:#D6E6EE; --maroon:#8C2F2B; --ochre:#B8871F; --juniper:#4E6A48;
+  --morning:#B8871F; --noon:#2D6E8E; --evening:#5B3F6E;
+  --warn-bg:#FBF1DC; --warn-ink:#6B4A07;
+  --navh:64px;
+  box-sizing:border-box;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#121A1F; --paper:#1A252C; --ink:#E4ECEF; --sub:#9BADB6; --line:#2C3A42;
+    --glacier:#6FB0CF; --glacier-soft:#20384A; --maroon:#D9726B; --ochre:#E0B34F; --juniper:#8DB083;
+    --morning:#E0B34F; --noon:#6FB0CF; --evening:#B79AD0; --warn-bg:#3A2F17; --warn-ink:#F1D79C;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121A1F; --paper:#1A252C; --ink:#E4ECEF; --sub:#9BADB6; --line:#2C3A42;
+  --glacier:#6FB0CF; --glacier-soft:#20384A; --maroon:#D9726B; --ochre:#E0B34F; --juniper:#8DB083;
+  --morning:#E0B34F; --noon:#6FB0CF; --evening:#B79AD0; --warn-bg:#3A2F17; --warn-ink:#F1D79C;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font-family:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  font-size:16px;line-height:1.6;-webkit-text-size-adjust:100%;
+  padding-bottom:calc(var(--navh) + env(safe-area-inset-bottom,0px) + 12px)}
+a{color:var(--glacier)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--ochre);outline-offset:2px}
+.wrap{max-width:560px;margin:0 auto;padding:0 14px}
+
+/* 상단 고정 바: 현재 일자 */
+header.top{position:sticky;top:0;z-index:10;background:var(--bg);
+  padding:calc(env(safe-area-inset-top,0px) + 10px) 14px 8px;border-bottom:1px solid var(--line)}
+.top-in{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:10px}
+.top-in .ttl{flex:1;min-width:0}
+.top-in .trip{font-size:12px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.top-in .cur{font-family:"Gowun Batang",Georgia,serif;font-weight:700;font-size:19px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.iconbtn{flex:0 0 auto;min-width:44px;height:44px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;font:inherit;font-size:18px;cursor:pointer}
+.iconbtn:disabled{opacity:.3}
+
+details.notice{margin:12px 0 0;background:var(--warn-bg);color:var(--warn-ink);border-radius:12px;font-size:13.5px;line-height:1.55}
+details.notice summary{padding:11px 14px;cursor:pointer;font-weight:600;list-style:none}
+details.notice summary::-webkit-details-marker{display:none}
+details.notice summary::after{content:"＋";float:right}
+details.notice[open] summary::after{content:"－"}
+details.notice div{padding:0 14px 12px}
+
+/* 하단 고정 탭바 */
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--paper);border-top:1px solid var(--line);
+  padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabrow{display:flex;max-width:560px;margin:0 auto;height:var(--navh)}
+.tab{flex:1 1 0;min-width:0;border:0;background:none;color:var(--sub);font:inherit;cursor:pointer;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:4px 2px;position:relative}
+.tab .n{font-size:15px;font-weight:600;line-height:1.1}
+.tab small{font-size:10.5px;line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.tab[aria-selected="true"]{color:var(--ink)}
+.tab[aria-selected="true"]::before{content:"";position:absolute;top:0;left:18%;right:18%;height:3px;border-radius:0 0 3px 3px;background:var(--maroon)}
+.tab .today{position:absolute;top:6px;right:calc(50% - 20px);width:7px;height:7px;border-radius:50%;background:var(--maroon)}
+
+main{padding:14px 0 24px}
+.day-head .date{color:var(--sub);font-size:13.5px}
+.day-head h2{font-family:"Gowun Batang",Georgia,serif;font-size:23px;margin:2px 0 0;line-height:1.3}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin:12px 0 0}
+.facts span{background:var(--paper);border-radius:12px;padding:8px 10px;font-size:11.5px;color:var(--sub);line-height:1.35}
+.facts span b{display:block;color:var(--ink);font-weight:600;font-size:13.5px;margin-top:2px}
+
+/* 고도 그래프 */
+.alt{margin:12px 0 4px;background:var(--paper);border-radius:14px;padding:10px 6px 2px}
+.alt-title{font-size:12px;color:var(--sub);padding:0 6px 2px}
+.alt svg{display:block;width:100%;height:auto}
+.alt .lbl{font-size:11px;fill:var(--ink)}
+.alt .elev{font-size:10.5px;fill:var(--sub)}
+.alt .grid{stroke:var(--line);stroke-width:1;stroke-dasharray:3 4}
+.alt .gridtxt{font-size:9px;fill:var(--sub)}
+.alt .danger{fill:var(--maroon);opacity:.08}
+
+.daytip{margin:12px 0 4px;background:var(--paper);border-left:4px solid var(--maroon);border-radius:0 12px 12px 0;padding:10px 12px;font-size:14.5px}
+.daytip b{color:var(--maroon)}
+
+/* 시간대 전환 칩 */
+.slotnav{display:flex;gap:6px;margin:16px 0 0;position:sticky;top:calc(env(safe-area-inset-top,0px) + 71px);z-index:5;background:var(--bg);padding:6px 0}
+.slotnav button{flex:1;min-height:42px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:12px;font:inherit;font-size:14.5px;font-weight:600;cursor:pointer}
+.slotnav button.now{border-color:var(--maroon)}
+.slotnav button.now::after{content:" · 지금";font-weight:400;font-size:12px;color:var(--maroon)}
+
+details.slot{margin-top:10px;background:var(--paper);border-radius:14px;overflow:hidden;border-left:5px solid var(--c);scroll-margin-top:140px}
+.slot.m{--c:var(--morning)} .slot.n{--c:var(--noon)} .slot.e{--c:var(--evening)}
+.slot summary{list-style:none;cursor:pointer;padding:14px 14px 12px;display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;min-height:56px}
+.slot summary::-webkit-details-marker{display:none}
+.slot summary h3{margin:0;font-size:17px;color:var(--c);font-weight:600}
+.slot summary .time{grid-column:1;font-size:12.5px;color:var(--sub)}
+.slot summary .sumtemp{grid-row:1 / span 2;grid-column:2;text-align:right;font-weight:600;font-size:15px}
+.slot summary .sumtemp::after{content:"⌄";display:inline-block;margin-left:8px;color:var(--sub);transition:transform .2s}
+.slot[open] summary .sumtemp::after{transform:rotate(180deg)}
+.rows{padding:0 14px 14px}
+.row{padding:11px 0;border-top:1px solid var(--line)}
+.row .k{font-size:12px;color:var(--sub);margin-bottom:3px;font-weight:500}
+.row .v{font-size:15px;min-width:0}
+.weather-line .temp{font-weight:600;font-size:17px;margin-right:6px}
+.place{display:block;padding:8px 0;border-top:1px dashed var(--line)}
+.place:first-child{border-top:0;padding-top:0}
+.place strong{font-weight:600}
+.place .cn{display:block;color:var(--sub);font-size:13px}
+.maplinks{display:flex;gap:8px;margin-top:7px}
+.maplinks a{flex:1;text-align:center;font-size:13.5px;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:9px 6px;color:var(--glacier);font-weight:500;background:var(--bg)}
+.v ul{margin:0;padding-left:20px}
+.v li{margin:3px 0}
+.wear{display:grid;grid-template-columns:auto 1fr;gap:5px 12px;margin:0}
+.wear dt{color:var(--sub);font-size:13px;padding-top:1px}
+.wear dd{margin:0}
+
+.forecast{margin-top:16px;font-size:13px;color:var(--sub)}
+.forecast .fl{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.forecast a{text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--paper);font-size:13.5px}
+.swipehint{text-align:center;color:var(--sub);font-size:12px;margin-top:18px}
+
+/* 짐 체크 */
+.check h2{font-family:"Gowun Batang",Georgia,serif;font-size:24px;margin:0 0 4px}
+.check .progress{color:var(--sub);font-size:13.5px;margin-bottom:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:4px}
+.bar i{display:block;height:100%;background:var(--juniper);border-radius:3px}
+.group{background:var(--paper);border-radius:14px;padding:6px 14px;margin-top:12px}
+.group h3{margin:8px 0 2px;font-size:15.5px}
+.group label{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1px solid var(--line);cursor:pointer;font-size:15px;min-height:48px}
+.group label:first-of-type{border-top:0}
+.group input{margin-top:2px;width:22px;height:22px;accent-color:var(--juniper);flex:0 0 auto}
+.group label.done span{color:var(--sub);text-decoration:line-through}
+.group label small{display:block;color:var(--sub);font-size:12.5px}
+.reset{margin-top:16px;font:inherit;font-size:14px;background:none;border:1px solid var(--line);color:var(--sub);border-radius:10px;padding:10px 14px;cursor:pointer;width:100%}
+
+footer{color:var(--sub);font-size:12.5px;padding:0 0 10px}
+@media (prefers-reduced-motion:no-preference){.panel{animation:fade .2s ease}@keyframes fade{from{opacity:0}to{opacity:1}}}
+
+.fcbox{margin:12px 0 0;background:var(--glacier-soft);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.fcbox b{color:var(--glacier);margin-right:4px}
+.fcbox small{display:block;color:var(--sub);font-size:11.5px;margin-top:2px}
+.place .lk{display:flex;align-items:center;gap:6px;margin-top:7px}
+.place .lkt{flex:0 0 30px;font-size:11.5px;color:var(--sub)}
+.place .lk a{flex:1;text-align:center;font-size:13.5px;text-decoration:none;border:1px solid var(--line);border-radius:10px;padding:9px 4px;color:var(--glacier);font-weight:500;background:var(--bg)}
+details.card{margin-top:12px;background:var(--paper);border-radius:14px;overflow:hidden}
+details.card summary{list-style:none;cursor:pointer;padding:14px;font-weight:600;font-size:15px}
+details.card summary::-webkit-details-marker{display:none}
+details.card summary::after{content:"⌄";float:right;color:var(--sub)}
+details.card[open] summary::after{content:"⌃"}
+details.card .alt{margin:0;padding-top:0}
+.mapbox{padding:0 8px 10px}
+.mapbox.big{background:var(--paper);border-radius:14px;padding:8px;margin-top:12px}
+.mapbox svg{display:block;width:100%;height:auto;background:var(--bg);border-radius:10px}
+.mgrid{stroke:var(--line);stroke-width:1}
+.mgt{font-size:9px;fill:var(--sub)}
+.mlbl{font-size:11.5px;fill:var(--ink);font-weight:600;paint-order:stroke;stroke:var(--bg);stroke-width:3px}
+.mlbl.off{fill:var(--sub);font-weight:400}
+.inset .mlbl{font-size:10.5px;stroke:var(--paper)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:12.5px;color:var(--sub);margin-top:8px}
+.legend i{display:inline-block;width:16px;height:4px;border-radius:2px;margin-right:5px;vertical-align:middle}
+.legend i.dash{background:repeating-linear-gradient(90deg,var(--sub) 0 5px,transparent 5px 9px)}
+.note{font-size:12.5px;color:var(--sub);margin:8px 2px}
+h3.sec{font-size:16px;margin:20px 0 0}
+.group.pl{padding:12px 14px}
+.pday{font-size:12px;color:var(--sub);margin-bottom:3px}
+.group.pl .place{padding:0;border:0}
+
+
+
+.optchip{display:block;text-decoration:none;border:1px solid var(--ochre);color:var(--ink);border-radius:10px;padding:8px 10px;margin-bottom:6px;font-size:14px;background:var(--warn-bg)}
+.optchip::before{content:"선택 ";color:var(--ochre);font-weight:600}
+.optsum{display:flex;justify-content:space-between;align-items:flex-end;background:var(--ink);color:var(--paper);border-radius:14px;padding:14px 16px;margin-top:12px}
+.optsum small{display:block;font-size:12px;opacity:.75}
+.optsum b{font-size:24px}
+.optsum .r{text-align:right;font-size:14px}
+.group.opt{padding:12px 14px}
+.opthead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.opthead h3{margin:2px 0 4px;font-size:17px}
+.price{text-align:right;font-weight:600;font-size:17px;white-space:nowrap}
+.price small{display:block;font-weight:400;font-size:12px;color:var(--sub)}
+.md{display:inline-block;font-size:10.5px;border:1px solid var(--glacier);color:var(--glacier);border-radius:4px;padding:0 4px;margin-left:4px}
+.group.opt .row{padding:9px 0}
+.group.opt .place{padding:0;border:0}
+label.optpick{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding:12px 0 2px;margin:0;font-weight:600;min-height:44px}
+label.optpick input{width:22px;height:22px;accent-color:var(--juniper);margin:0}
+
+/* 스크립트가 안 도는 환경(카톡 미리보기 등): 날짜별 제목 바가 스크롤에 따라 바뀜 */
+html:not(.js-ok) header.top{position:static}
+html:not(.js-ok) #prevBtn,html:not(.js-ok) #nextBtn,html:not(.js-ok) #themeBtn{display:none}
+html:not(.js-ok) a.tab{text-decoration:none}
+section.static{scroll-margin-top:0;margin-bottom:30px}
+.stitle{position:sticky;top:0;z-index:8;margin:0 -14px 10px;padding:calc(env(safe-area-inset-top,0px) + 12px) 14px 10px;
+  background:var(--ink);color:var(--paper);font-family:"Gowun Batang",Georgia,serif;font-weight:700;font-size:18px}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <button class="iconbtn" id="prevBtn" type="button" aria-label="이전 날">‹</button>
+    <div class="ttl"><div class="trip">리장·샹그릴라·쿤밍 10.7–10.12</div><div class="cur" id="curTitle">여행 가이드</div></div>
+    <button class="iconbtn" id="nextBtn" type="button" aria-label="다음 날">›</button>
+    <button class="iconbtn" id="themeBtn" type="button" aria-label="화면 테마 전환">◐</button>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="일자 선택"><div class="tabrow" role="tablist" id="tabrow"><a class="tab" href="#s-d1"><span class="n">7</span><small>출국</small></a><a class="tab" href="#s-d2"><span class="n">8</span><small>리장고성</small></a><a class="tab" href="#s-d3"><span class="n">9</span><small>옥룡설산</small></a><a class="tab" href="#s-d4"><span class="n">10</span><small>호도협·샹그릴라</small></a><a class="tab" href="#s-d5"><span class="n">11</span><small>송찬림사·석림</small></a><a class="tab" href="#s-d6"><span class="n">12</span><small>귀국</small></a><a class="tab" href="#s-route"><span class="n">⌖</span><small>경로</small></a><a class="tab" href="#s-opt"><span class="n">＋</span><small>선택</small></a><a class="tab" href="#s-check"><span class="n">✓</span><small>짐</small></a></div></nav>
+
+<div class="wrap">
+  <details class="notice"><summary>일정·날씨 안내 (출발 전 꼭 읽기)</summary><div>
+    <b>일정</b> 하나투어 상품 페이지에 일차별 상세가 공개되어 있지 않아, 같은 구성(대한항공 직항·객잔숙박·옥룡설산 빙천케이블카·석림)의 표준 동선으로 재구성했습니다. 확정일정표와 순서가 다를 수 있습니다.<br>
+    <b>날씨</b> 10월 평년값과 최근 현지 관측 경향 기준 예상치입니다. 각 일자 하단 ‘실시간 예보’로 전날 확인하세요.<br>
+    <b>지도</b> Google 지도는 한국 로밍 데이터에서만 열립니다. 현지 유심·와이파이에서는 ‘고덕’을 누르세요.
+  </div></details>
+</div>
+<main class="wrap" id="main"><section class="static" id="s-d1"><div class="stitle">10.7 수 · 출국</div><div class="panel" role="tabpanel">
+    <div class="day-head">
+      <div class="date">1일차 · 10.07 (수)</div>
+      <h2>인천 출발, 쿤밍 도착</h2>
+      <div class="facts"><span>기온<b>쿤밍 14–22°C</b></span><span>최고 고도<b>1,890m</b></span><span>숙박<b>쿤밍 호텔</b></span></div>
+    </div>
+    <div class="fcbox"><b>현지 예보</b> 쿤밍 약한 비 · 최고 22° / 최저 14°<small>墨迹天气 10/1 조회 · 7일 이후는 참고용, 출발 2–3일 전 재확인</small></div>
+    <div class="daytip"><b>오늘 핵심</b> 저녁 출발편이라 낮엔 국내에서 준비만 하면 됩니다. 기내용 가방에 겉옷 한 벌, 여권, 보조배터리를 넣어 두세요.</div>
+    
+    <details class="slot m" open="">
+    <summary><h3>오전</h3><span class="time">출발 전</span><span class="sumtemp">서울 기준</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">서울 기준</span>출발 전 국내 일기예보 확인</div></div>
+      <div class="row"><div class="k">어디</div><div class="v">—</div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">짐 최종 점검. 아래 ‘짐 체크’ 탭의 항목을 하나씩 확인하세요. 알리페이·위챗페이에 해외카드를 미리 연결하고 소액 결제 테스트를 해 두면 현지에서 편합니다.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>여권(유효기간 6개월 이상)</li><li>항공권·여행자보험 확인</li><li>알리페이/위챗페이 결제 테스트</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>평상복</dd><dt>하의</dt><dd>편한 바지</dd><dt>겉옷</dt><dd>가벼운 재킷</dd><dt>신발</dt><dd>내일부터 신을 운동화/트레킹화</dd></dl></div></div>
+    </div></details><details class="slot n" open="">
+    <summary><h3>낮</h3><span class="time">공항 이동</span><span class="sumtemp">서울 기준</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">서울 기준</span>—</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>인천국제공항 제2여객터미널</strong>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Incheon%20International%20Airport%20Terminal%202" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%BB%81%E5%B7%9D%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%9D%B8%EC%B2%9C%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%A0%9C2%EC%97%AC%EA%B0%9D%ED%84%B0%EB%AF%B8%EB%84%90%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%9D%B8%EC%B2%9C%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%A0%9C2%EC%97%AC%EA%B0%9D%ED%84%B0%EB%AF%B8%EB%84%90" target="_blank" rel="noopener">위키백과</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">대한항공은 제2여객터미널(T2)에서 출발합니다. 미팅 시간·장소는 하나투어 확정 안내 문자를 따르세요(보통 출발 2시간 30분~3시간 전).</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>보조배터리는 기내 반입만 가능(위탁 불가)</li><li>액체류 100ml 이하 지퍼백</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔 티</dd><dt>하의</dt><dd>편한 바지</dd><dt>겉옷</dt><dd>기내용 얇은 후리스(기내가 쌀쌀함)</dd><dt>신발</dt><dd>운동화</dd></dl></div></div>
+    </div></details><details class="slot e" open="">
+    <summary><h3>저녁</h3><span class="time">출발 18시대 → 도착 22시대(현지)</span><span class="sumtemp">14–16°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">14–16°C</span>쿤밍 밤, 약한 비 예보 · 우산 꺼내기 쉽게</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>쿤밍 창수이 국제공항</strong><span class="cn">昆明长水国际机场</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Kunming%20Changshui%20International%20Airport" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E6%98%86%E6%98%8E%E9%95%BF%E6%B0%B4%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%BF%A4%EB%B0%8D%20%EC%B0%BD%EC%88%98%EC%9D%B4%20%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%BF%A4%EB%B0%8D%20%EC%B0%BD%EC%88%98%EC%9D%B4%20%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E6%98%86%E6%98%8E%E9%95%BF%E6%B0%B4%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">비행 약 4시간 30분. 중국은 한국보다 1시간 늦습니다(시계 −1시간). 도착 후 입국심사 → 가이드 미팅 → 호텔 이동. 쿤밍은 해발 약 1,890m라 몸이 살짝 무거울 수 있으니 첫날은 바로 쉬세요.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>입국 시 지문 등록 대기 있음</li><li>호텔 체크인 후 물 충분히</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔 티</dd><dt>하의</dt><dd>긴바지</dd><dt>겉옷</dt><dd>바람막이 또는 얇은 후리스</dd><dt>신발</dt><dd>운동화</dd></dl></div></div>
+    </div></details>
+    
+    <details class="card"><summary>오늘의 고도 변화</summary><div class="alt"><svg viewBox="0 0 360 150" role="img" aria-label="고도 변화(미터)">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--glacier)" stop-opacity=".45"></stop><stop offset="1" stop-color="var(--glacier)" stop-opacity=".05"></stop></linearGradient></defs>
+    <rect class="danger" x="30" y="22" width="316" height="39.2"></rect><line class="grid" x1="30" x2="346" y1="100.4" y2="100.4"></line><text class="gridtxt" x="2" y="103.4">1k</text><line class="grid" x1="30" x2="346" y1="80.8" y2="80.8"></line><text class="gridtxt" x="2" y="83.8">2k</text><line class="grid" x1="30" x2="346" y1="61.2" y2="61.2"></line><text class="gridtxt" x="2" y="64.2">3k</text><line class="grid" x1="30" x2="346" y1="41.599999999999994" y2="41.599999999999994"></line><text class="gridtxt" x="2" y="44.599999999999994">4k</text><line class="grid" x1="30" x2="346" y1="22" y2="22"></line><text class="gridtxt" x="2" y="25">5k</text><path d="M30,119.804 C188,119.804 188,82.956 346,82.956 L346,120 L30,120 Z" fill="url(#g)"></path><path d="M30,119.804 C188,119.804 188,82.956 346,82.956" fill="none" stroke="var(--glacier)" stroke-width="2.2"></path><circle cx="30" cy="119.804" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="30" y="111.804" text-anchor="start">10</text>
+      <text class="lbl" x="30" y="133" text-anchor="start">인천</text><circle cx="346" cy="82.956" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="346" y="74.956" text-anchor="end">1,890</text>
+      <text class="lbl" x="346" y="133" text-anchor="end">쿤밍</text></svg><div class="alt-title">붉은 띠 = 3,000m 이상 고산 구간 (단위 m)</div></div></details>
+    <div class="forecast">실시간 예보 (墨迹天气 · 중국에서도 접속됨)<div class="fl"><a href="https://tianqi.moji.com/forecast15/china/yunnan/kunming" target="_blank" rel="noopener">쿤밍</a></div></div>
+    
+  </div></section><section class="static" id="s-d2"><div class="stitle">10.8 목 · 리장고성</div><div class="panel" role="tabpanel">
+    <div class="day-head">
+      <div class="date">2일차 · 10.08 (목)</div>
+      <h2>쿤밍 → 리장, 고성 객잔에서 하룻밤</h2>
+      <div class="facts"><span>기온<b>리장 9–22°C</b></span><span>최고 고도<b>2,420m</b></span><span>숙박<b>리장고성 객잔(나시족 전통가옥)</b></span></div>
+    </div>
+    <div class="fcbox"><b>현지 예보</b> 리장 약한 비 · 최고 22° / 최저 9° (쿤밍 약한 비 21°/16°)<small>墨迹天气 10/1 조회 · 7일 이후는 참고용, 출발 2–3일 전 재확인</small></div>
+    <div class="daytip"><b>오늘 핵심</b> 해발 2,400m 첫날입니다. 고성 돌길은 오르내림이 많으니 천천히 걷고, 음주는 가볍게. 객잔은 난방이 약할 수 있어 밤에 입을 보온 옷을 꺼내 두세요.</div>
+    
+    <details class="slot m" open="">
+    <summary><h3>오전</h3><span class="time">07:00–11:30</span><span class="sumtemp">쿤밍 15–17°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">쿤밍 15–17°C</span>흐리고 약한 비 가능</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>쿤밍 → 리장 이동</strong><span class="cn">丽江</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20Yunnan" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%BF%A4%EB%B0%8D%20%E2%86%92%20%EB%A6%AC%EC%9E%A5%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%BF%A4%EB%B0%8D%20%E2%86%92%20%EB%A6%AC%EC%9E%A5" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">국내선(약 1시간) 또는 고속철(약 3~3.5시간)로 리장 이동. 이동 수단은 확정일정표 확인. 기차·항공 모두 여권 실명 확인이 있습니다.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>여권(신분 확인 필수)</li><li>3C 인증 보조배터리(중국 국내선 규정)</li><li>간식·물</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔 티</dd><dt>하의</dt><dd>긴바지</dd><dt>겉옷</dt><dd>얇은 후리스 + 바람막이</dd><dt>신발</dt><dd>쿠션 좋은 운동화</dd></dl></div></div>
+    </div></details><details class="slot n" open="">
+    <summary><h3>낮</h3><span class="time">12:00–17:30</span><span class="sumtemp">리장 19–22°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">리장 19–22°C</span>약한 비 예보 · 구름 사이 햇살은 매우 강함(고지대)</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>흑룡담 공원</strong><span class="cn">黑龙潭公园</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Black%20Dragon%20Pool%20Park%20Lijiang" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E9%BB%91%E9%BE%99%E6%BD%AD%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%ED%9D%91%EB%A3%A1%EB%8B%B4%20%EA%B3%B5%EC%9B%90%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%ED%9D%91%EB%A3%A1%EB%8B%B4%20%EA%B3%B5%EC%9B%90" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E9%BB%91%E9%BE%99%E6%BD%AD%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">바이두</a></div></div><div class="place"><strong>리장고성 사방가</strong><span class="cn">丽江古城 四方街</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Sifang%20Street%20Lijiang%20Old%20Town" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E%E5%9B%9B%E6%96%B9%E8%A1%97" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1%20%EC%82%AC%EB%B0%A9%EA%B0%80%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1%20%EC%82%AC%EB%B0%A9%EA%B0%80" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">흑룡담은 고성의 수원지로, 맑은 날 호수에 옥룡설산이 비치는 대표 포토스팟입니다. 리장고성은 송대부터 이어진 나시족 마을로 세계문화유산. 수로를 따라 사방가를 중심으로 골목이 퍼져 있습니다. 고성 입장 시 ‘고성유지비’가 포함인지 가이드에게 확인하세요.</div></div>
+      <div class="row"><div class="k">선택관광</div><div class="v"><a class="optchip" href="#opt-sokha" data-goopt="sokha">속하고진 마차체험 · USD 30 · 1시간</a></div></div>
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>선글라스·모자</li><li>선크림 SPF50+(2시간마다)</li><li>소액 현금·간편결제</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>반팔 또는 얇은 긴팔</dd><dt>하의</dt><dd>긴바지</dd><dt>겉옷</dt><dd>바람막이는 가방에</dd><dt>신발</dt><dd>미끄럼 덜한 운동화(돌길 반들거림)</dd></dl></div></div>
+    </div></details><details class="slot e" open="">
+    <summary><h3>저녁</h3><span class="time">18:00 이후</span><span class="sumtemp">9–12°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">9–12°C</span>해 지면 급격히 쌀쌀 · 돌길 젖으면 미끄러움</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>리장고성 야경</strong><span class="cn">丽江古城</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20Old%20Town" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">바이두</a></div></div><div class="place"><strong>고성 객잔 숙박</strong><span class="cn">客栈</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20Old%20Town%20inn" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E%E5%AE%A2%E6%A0%88" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EA%B3%A0%EC%84%B1%20%EA%B0%9D%EC%9E%94%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EA%B3%A0%EC%84%B1%20%EA%B0%9D%EC%9E%94" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E5%AE%A2%E6%A0%88" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">홍등이 켜진 고성 골목과 수로 야경이 하이라이트. 객잔은 나시족 전통 목조 가옥을 개조한 숙소로, 마당(정원)을 둘러싼 구조입니다. 목조라 방음·난방이 약할 수 있어요.</div></div>
+      <div class="row"><div class="k">선택관광</div><div class="v"><a class="optchip" href="#opt-yagyeong" data-goopt="yagyeong">리장고성 야경투어 · USD 30 · 약 2시간</a></div></div>
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>경량패딩(밤 산책)</li><li>핫팩 1~2개</li><li>실내용 슬리퍼</li><li>귀마개(목조 숙소 소음)</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔 + 얇은 니트</dd><dt>하의</dt><dd>긴바지</dd><dt>겉옷</dt><dd>경량패딩</dd><dt>신발</dt><dd>운동화</dd></dl></div></div>
+    </div></details>
+    <details class="card"><summary>오늘의 이동 경로</summary><div class="mapbox"><svg viewBox="0 0 360 380" role="img" aria-label="일정 경로 지도">
+    <defs><clipPath id="icd2"><rect x="188" y="12" width="160" height="200" rx="8"></rect></clipPath></defs>
+    <line class="mgrid" x1="3.7894736842103107" x2="3.7894736842103107" y1="0" y2="380"></line><text class="mgt" x="6.789473684210311" y="376">99°E</text><line class="mgrid" x1="79.57894736842084" x2="79.57894736842084" y1="0" y2="380"></line><text class="mgt" x="82.57894736842084" y="376">100°E</text><line class="mgrid" x1="155.36842105263136" x2="155.36842105263136" y1="0" y2="380"></line><text class="mgt" x="158.36842105263136" y="376">101°E</text><line class="mgrid" x1="231.1578947368419" x2="231.1578947368419" y1="0" y2="380"></line><text class="mgt" x="234.1578947368419" y="376">102°E</text><line class="mgrid" x1="306.94736842105243" x2="306.94736842105243" y1="0" y2="380"></line><text class="mgt" x="309.94736842105243" y="376">103°E</text><line class="mgrid" x1="0" x2="360" y1="332.50000000000006" y2="332.50000000000006"></line><text class="mgt" x="3" y="329.50000000000006">25°N</text><line class="mgrid" x1="0" x2="360" y1="226.94444444444443" y2="226.94444444444443"></line><text class="mgt" x="3" y="223.94444444444443">26°N</text><line class="mgrid" x1="0" x2="360" y1="121.3888888888888" y2="121.3888888888888"></line><text class="mgt" x="3" y="118.3888888888888">27°N</text><line class="mgrid" x1="0" x2="360" y1="15.833333333333192" y2="15.833333333333192"></line><text class="mgt" x="3" y="12.833333333333192">28°N</text><path d="M82.37894736842065,116.8333333333331 l5.6000000000000005,-9.600000000000001 l4,5.6000000000000005 l4,-8 l5.6000000000000005,12 z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"></path><path d="M284.9684210526309,328.2777777777779 Q214.16947368421026,209.13949707602345 97.01052631578956,135.11111111111094" fill="none" stroke="var(--ochre)" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M97.76842105263097,132.9999999999999 Q97.38947368421026,134.05555555555543 97.01052631578956,135.11111111111094" fill="none" stroke="var(--ochre)" stroke-width="3" stroke-linecap="round"></path><path d="M97.01052631578956,135.11111111111094 Q95.49473684210511,122.97222222222203 93.97894736842066,110.8333333333331" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M93.97894736842066,110.8333333333331 Q96.25263157894707,109.24999999999989 98.52631578947347,107.66666666666669" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M98.52631578947347,107.66666666666669 Q97.76842105263151,121.38888888888881 97.01052631578956,135.11111111111094" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M97.01052631578956,135.11111111111094 Q86.40000000000003,134.58333333333326 75.78947368421052,134.0555555555556" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M75.78947368421052,134.0555555555556 Q80.71578947368403,117.69444444444436 85.64210526315755,101.33333333333312" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M85.64210526315755,101.33333333333312 Q68.58947368421008,64.91666666666654 51.5368421052626,28.49999999999997" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M51.5368421052626,28.49999999999997 Q54.18947368421025,31.666666666666572 56.8421052631579,34.83333333333317" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M57.59999999999931,30.61111111111104 Q207.00421052631515,152.16023391812865 284.9684210526309,328.2777777777779" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M284.9684210526309,328.2777777777779 Q308.46315789473636,339.88888888888897 331.95789473684175,351.50000000000006" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M331.95789473684175,351.50000000000006 Q316.79999999999995,336.7222222222222 301.6421052631582,321.94444444444434" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><circle cx="284.9684210526309" cy="328.2777777777779" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="276.9684210526309" y="320.2777777777779" text-anchor="end">쿤밍</text><circle cx="301.6421052631582" cy="321.94444444444434" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="97.01052631578956" cy="135.11111111111094" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="107.01052631578956" y="149.11111111111094" text-anchor="start">리장고성</text><circle cx="97.76842105263097" cy="132.9999999999999" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="93.97894736842066" cy="110.8333333333331" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="98.52631578947347" cy="107.66666666666669" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="75.78947368421052" cy="134.0555555555556" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="85.64210526315755" cy="101.33333333333312" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="51.5368421052626" cy="28.49999999999997" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="56.8421052631579" cy="34.83333333333317" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="57.59999999999931" cy="30.61111111111104" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="331.95789473684175" cy="351.50000000000006" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle>
+    <rect x="11.368421052630932" y="13.722222222222126" width="132.6315789473684" height="137.22222222222237" fill="none" stroke="var(--sub)" stroke-dasharray="3 3"></rect>
+    <line x1="143.99999999999935" y1="13.722222222222126" x2="188" y2="12" stroke="var(--sub)" stroke-dasharray="3 3"></line>
+    <line x1="143.99999999999935" y1="150.94444444444449" x2="188" y2="212" stroke="var(--sub)" stroke-dasharray="3 3"></line>
+    <rect x="188" y="12" width="160" height="200" rx="8" fill="var(--paper)" stroke="var(--sub)"></rect>
+    <g clip-path="url(#icd2)" class="inset"><path d="M266.4571428571432,167.53846153846118 l11.200000000000001,-19.200000000000003 l8,11.200000000000001 l8,-16 l11.200000000000001,24 z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"></path><path d="M518.0571428571428,470.4615384615383 Q438.4703296703301,302.4831648351647 291.3142857142866,188.92307692307662" fill="none" stroke="var(--ochre)" stroke-width="3.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M292.2285714285715,185.8461538461536 Q291.77142857142906,187.38461538461513 291.3142857142866,188.92307692307662" fill="none" stroke="var(--ochre)" stroke-width="3.5" stroke-linecap="round"></path><path d="M291.3142857142866,188.92307692307662 Q289.4857142857149,171.23076923076889 287.6571428571432,153.53846153846118" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M287.6571428571432,153.53846153846118 Q290.40000000000043,151.23076923076906 293.1428571428577,148.92307692307693" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M293.1428571428577,148.92307692307693 Q292.22857142857214,168.9230769230768 291.3142857142866,188.92307692307662" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M291.3142857142866,188.92307692307662 Q278.51428571428653,188.15384615384602 265.71428571428646,187.3846153846154" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M265.71428571428646,187.3846153846154 Q271.6571428571434,163.53846153846138 277.60000000000036,139.69230769230737" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M277.60000000000036,139.69230769230737 Q257.0285714285717,86.6153846153845 236.45714285714297,33.53846153846162" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M236.45714285714297,33.53846153846162 Q239.6571428571433,38.15384615384613 242.85714285714363,42.769230769230646" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M243.77142857142852,36.61538461538463 Q432.9758241758241,220.62417582417572 518.0571428571428,470.4615384615383" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M518.0571428571428,470.4615384615383 Q546.4000000000001,487.38461538461513 574.7428571428575,504.3076923076919" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M574.7428571428575,504.3076923076919 Q556.4571428571436,482.7692307692303 538.1714285714297,461.2307692307687" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><circle cx="291.3142857142866" cy="188.92307692307662" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="301.3142857142866" y="204.92307692307662" text-anchor="start">리장고성</text><circle cx="292.2285714285715" cy="185.8461538461536" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="302.2285714285715" y="181.8461538461536" text-anchor="start">흑룡담</text><circle cx="287.6571428571432" cy="153.53846153846118" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="293.1428571428577" cy="148.92307692307693" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="265.71428571428646" cy="187.3846153846154" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="277.60000000000036" cy="139.69230769230737" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="236.45714285714297" cy="33.53846153846162" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="242.85714285714363" cy="42.769230769230646" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="243.77142857142852" cy="36.61538461538463" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle></g>
+    
+  </svg><div class="legend"><span><i style="background:var(--ochre)"></i>10.8 목 리장고성</span><span><i class="dash"></i>항공·열차 이동</span></div></div></details>
+    <details class="card"><summary>오늘의 고도 변화</summary><div class="alt"><svg viewBox="0 0 360 150" role="img" aria-label="고도 변화(미터)">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--glacier)" stop-opacity=".45"></stop><stop offset="1" stop-color="var(--glacier)" stop-opacity=".05"></stop></linearGradient></defs>
+    <rect class="danger" x="30" y="22" width="316" height="39.2"></rect><line class="grid" x1="30" x2="346" y1="100.4" y2="100.4"></line><text class="gridtxt" x="2" y="103.4">1k</text><line class="grid" x1="30" x2="346" y1="80.8" y2="80.8"></line><text class="gridtxt" x="2" y="83.8">2k</text><line class="grid" x1="30" x2="346" y1="61.2" y2="61.2"></line><text class="gridtxt" x="2" y="64.2">3k</text><line class="grid" x1="30" x2="346" y1="41.599999999999994" y2="41.599999999999994"></line><text class="gridtxt" x="2" y="44.599999999999994">4k</text><line class="grid" x1="30" x2="346" y1="22" y2="22"></line><text class="gridtxt" x="2" y="25">5k</text><path d="M30,82.956 C82.66666666666666,82.956 82.66666666666666,72.96000000000001 135.33333333333331,72.96000000000001 C188,72.96000000000001 188,72.568 240.66666666666666,72.568 C293.3333333333333,72.568 293.3333333333333,72.96000000000001 346,72.96000000000001 L346,120 L30,120 Z" fill="url(#g)"></path><path d="M30,82.956 C82.66666666666666,82.956 82.66666666666666,72.96000000000001 135.33333333333331,72.96000000000001 C188,72.96000000000001 188,72.568 240.66666666666666,72.568 C293.3333333333333,72.568 293.3333333333333,72.96000000000001 346,72.96000000000001" fill="none" stroke="var(--glacier)" stroke-width="2.2"></path><circle cx="30" cy="82.956" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="30" y="74.956" text-anchor="start">1,890</text>
+      <text class="lbl" x="30" y="133" text-anchor="start">쿤밍</text><circle cx="135.33333333333331" cy="72.96000000000001" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="135.33333333333331" y="64.96000000000001" text-anchor="middle">2,400</text>
+      <text class="lbl" x="135.33333333333331" y="133" text-anchor="middle">리장</text><circle cx="240.66666666666666" cy="72.568" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="240.66666666666666" y="64.568" text-anchor="middle">2,420</text>
+      <text class="lbl" x="240.66666666666666" y="133" text-anchor="middle">흑룡담</text><circle cx="346" cy="72.96000000000001" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="346" y="64.96000000000001" text-anchor="end">2,400</text>
+      <text class="lbl" x="346" y="133" text-anchor="end">리장고성</text></svg><div class="alt-title">붉은 띠 = 3,000m 이상 고산 구간 (단위 m)</div></div></details>
+    <div class="forecast">실시간 예보 (墨迹天气 · 중국에서도 접속됨)<div class="fl"><a href="https://tianqi.moji.com/forecast15/china/yunnan/lijiang" target="_blank" rel="noopener">리장</a><a href="https://tianqi.moji.com/forecast15/china/yunnan/kunming" target="_blank" rel="noopener">쿤밍</a></div></div>
+    
+  </div></section><section class="static" id="s-d3"><div class="stitle">10.9 금 · 옥룡설산</div><div class="panel" role="tabpanel">
+    <div class="day-head">
+      <div class="date">3일차 · 10.09 (금)</div>
+      <h2>옥룡설산 빙천케이블카와 람월곡</h2>
+      <div class="facts"><span>기온<b>설산 −3–5° · 리장 10–22°</b></span><span>최고 고도<b>4,680m</b></span><span>숙박<b>리장 5성급 호텔</b></span></div>
+    </div>
+    <div class="fcbox"><b>현지 예보</b> 리장 약한 비 · 최고 22° / 최저 10° → 설산 정상부는 눈·진눈깨비 가능<small>墨迹天气 10/1 조회 · 7일 이후는 참고용, 출발 2–3일 전 재확인</small></div>
+    <div class="daytip"><b>오늘 핵심</b> 이번 여행 최고 고도(약 4,500~4,680m). 위에서는 뛰거나 서두르지 말고, 두통·어지럼이 오면 계단을 더 오르지 말고 내려오세요. 산소통은 현장 매점에서 팝니다. 케이블카 매표에 여권이 필요합니다.</div>
+    
+    <details class="slot m" open="">
+    <summary><h3>오전</h3><span class="time">07:30–12:00</span><span class="sumtemp">−3–5°C (정상부)</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">−3–5°C (정상부)</span>리장 비 예보 → 정상부는 눈·진눈깨비 가능 · 바람 강함 · 체감 영하</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>옥룡설산 빙천공원 케이블카</strong><span class="cn">玉龙雪山冰川公园</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Jade%20Dragon%20Snow%20Mountain%20Glacier%20Park" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1%E5%86%B0%E5%B7%9D%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%98%A5%EB%A3%A1%EC%84%A4%EC%82%B0%20%EB%B9%99%EC%B2%9C%EA%B3%B5%EC%9B%90%20%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%98%A5%EB%A3%A1%EC%84%A4%EC%82%B0%20%EB%B9%99%EC%B2%9C%EA%B3%B5%EC%9B%90%20%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1%E5%86%B0%E5%B7%9D%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">셔틀버스로 해발 약 3,356m 탑승장까지 간 뒤, 케이블카로 약 15분 만에 해발 4,506m 빙천공원에 도착합니다. 나무 데크 계단을 오르면 4,680m 전망대. 만년설과 빙하를 가장 가까이 볼 수 있는 구간이라 오전 맑을 때가 가장 좋습니다.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>방수 장갑(눈·진눈깨비 대비)</li><li>여권(매표 필수)</li><li>휴대용 산소통(현장 구매 가능)</li><li>장갑·비니·넥워머</li><li>선글라스(설맹 예방)</li><li>보온병 따뜻한 물</li><li>초콜릿·사탕</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>기능성 긴팔 + 후리스</dd><dt>하의</dt><dd>기모 바지 또는 레깅스+바지</dd><dt>겉옷</dt><dd>패딩(현장 대여 패딩도 있음) + 방풍</dd><dt>신발</dt><dd>트레킹화(데크 결빙 가능)</dd></dl></div></div>
+    </div></details><details class="slot n" open="">
+    <summary><h3>낮</h3><span class="time">12:00–17:00</span><span class="sumtemp">15–19°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">15–19°C</span>약한 비 예보 · 오후 소나기 대비</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>람월곡(블루문 밸리)</strong><span class="cn">蓝月谷</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Blue%20Moon%20Valley%20Lijiang" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1%E8%93%9D%E6%9C%88%E8%B0%B7" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%9E%8C%EC%9B%94%EA%B3%A1%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%9E%8C%EC%9B%94%EA%B3%A1" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E8%93%9D%E6%9C%88%E8%B0%B7" target="_blank" rel="noopener">바이두</a></div></div><div class="place"><strong>인상여강 쇼(선택관광 시)</strong><span class="cn">印象丽江</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Impression%20Lijiang%20Show" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E5%8D%B0%E8%B1%A1%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%9D%B8%EC%83%81%EC%97%AC%EA%B0%95%20%EC%87%BC%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%9D%B8%EC%83%81%EC%97%AC%EA%B0%95%20%EC%87%BC" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E5%8D%B0%E8%B1%A1%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">람월곡은 빙하 녹은 물이 석회암 계단식 호수를 이루며 에메랄드·옥빛을 띠는 계곡입니다. 전동차로 이동하며 포인트마다 내려 사진. 인상여강은 설산을 배경으로 소수민족 수백 명이 출연하는 야외 공연으로, 선택관광 여부를 확인하세요.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>정상에서 입은 패딩은 벗어 가방에</li><li>선크림 덧바르기</li><li>우산 또는 방수 바람막이</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔 티</dd><dt>하의</dt><dd>긴바지</dd><dt>겉옷</dt><dd>후리스는 허리에, 바람막이 휴대</dd><dt>신발</dt><dd>트레킹화</dd></dl></div></div>
+    </div></details><details class="slot e" open="">
+    <summary><h3>저녁</h3><span class="time">18:00 이후</span><span class="sumtemp">10–12°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">10–12°C</span>리장 시내, 선선</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>리장 시내 5성급 호텔</strong><span class="cn">丽江</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20city" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%B8%82" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%A6%AC%EC%9E%A5%20%EC%8B%9C%EB%82%B4%205%EC%84%B1%EA%B8%89%20%ED%98%B8%ED%85%94%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%A6%AC%EC%9E%A5%20%EC%8B%9C%EB%82%B4%205%EC%84%B1%EA%B8%89%20%ED%98%B8%ED%85%94" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">고산 일정 후라 피로가 큽니다. 일찍 쉬고 물을 충분히 마시세요. 내일은 고도가 1,800m까지 내려갔다가 3,300m까지 다시 올라가는 날입니다.</div></div>
+      <div class="row"><div class="k">선택관광</div><div class="v"><a class="optchip" href="#opt-massage_lj" data-goopt="massage_lj">전신마사지 (리장) · USD 40 · 약 1시간</a></div></div>
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>따뜻한 샤워는 짧게</li><li>수분 보충</li><li>내일 가방에 경량패딩 미리 넣기</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔</dd><dt>하의</dt><dd>긴바지</dd><dt>겉옷</dt><dd>얇은 후리스</dd><dt>신발</dt><dd>편한 신발</dd></dl></div></div>
+    </div></details>
+    <details class="card"><summary>오늘의 이동 경로</summary><div class="mapbox"><svg viewBox="0 0 360 360" role="img" aria-label="이동 경로 확대 지도"><path d="M141.50462633451866,129.94306049821944 l11.200000000000001,-19.200000000000003 l8,11.200000000000001 l8,-16 l11.200000000000001,24 z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"></path><path d="M1615.5160142348932,1435.5160142348814 Q1041.3096085409363,677.8249110320296 185.76512455516317,263.2740213523129" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M191.53024911031815,250.46263345195723 Q188.64768683274065,256.86832740213504 185.76512455516317,263.2740213523129" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M185.76512455516317,263.2740213523129 Q174.23487544484092,189.60854092526617 162.70462633451868,115.94306049821945" fill="none" stroke="var(--glacier)" stroke-width="3.5" stroke-linecap="round"></path><path d="M162.70462633451868,115.94306049821945 Q180,106.33451957295328 197.29537366548132,96.72597864768711" fill="none" stroke="var(--glacier)" stroke-width="3.5" stroke-linecap="round"></path><path d="M197.29537366548132,96.72597864768711 Q191.53024911032225,180 185.76512455516317,263.2740213523129" fill="none" stroke="var(--glacier)" stroke-width="3.5" stroke-linecap="round"></path><path d="M185.76512455516317,263.2740213523129 Q105.05338078291969,260.07117437722457 24.341637010676216,256.8683274021362" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M24.341637010676216,256.8683274021362 Q61.81494661921637,157.58007117437703 99.28825622775652,58.29181494661788" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M99.28825622775652,58.29181494661788 Q-30.42704626334936,-162.70462633452112 -160.14234875445524,-383.7010676156601" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M-160.14234875445524,-383.7010676156601 Q-139.96441281139232,-364.48398576512665 -119.78647686832942,-345.2669039145932" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M-114.02135231317443,-370.88967971530445 Q967.5160142348816,324.7686832740203 1615.5160142348932,1435.5160142348814" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M1615.5160142348932,1435.5160142348814 Q1794.2348754448615,1505.9786476868385 1972.9537366548298,1576.4412811387958" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M1972.9537366548298,1576.4412811387958 Q1857.6512455516277,1486.7615658363038 1742.3487544484258,1397.081850533812" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><circle cx="185.76512455516317" cy="263.2740213523129" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="195.76512455516317" y="279.2740213523129" text-anchor="start">리장고성</text><circle cx="191.53024911031815" cy="250.46263345195723" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="162.70462633451868" cy="115.94306049821945" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="153.70462633451868" y="119.94306049821945" text-anchor="end">옥룡설산 빙천</text><circle cx="197.29537366548132" cy="96.72597864768711" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="206.29537366548132" y="92.72597864768711" text-anchor="start">람월곡</text><circle cx="24.341637010676216" cy="256.8683274021362" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="99.28825622775652" cy="58.29181494661788" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><text class="mgt" x="348" y="352" text-anchor="end">리장–샹그릴라 일대 확대</text></svg><div class="legend"><span><i style="background:var(--glacier)"></i>10.9 금 옥룡설산</span><span><i class="dash"></i>항공·열차 이동</span></div></div></details>
+    <details class="card"><summary>오늘의 고도 변화</summary><div class="alt"><svg viewBox="0 0 360 158" role="img" aria-label="고도 변화(미터)">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--glacier)" stop-opacity=".45"></stop><stop offset="1" stop-color="var(--glacier)" stop-opacity=".05"></stop></linearGradient></defs>
+    <rect class="danger" x="30" y="22" width="316" height="39.2"></rect><line class="grid" x1="30" x2="346" y1="100.4" y2="100.4"></line><text class="gridtxt" x="2" y="103.4">1k</text><line class="grid" x1="30" x2="346" y1="80.8" y2="80.8"></line><text class="gridtxt" x="2" y="83.8">2k</text><line class="grid" x1="30" x2="346" y1="61.2" y2="61.2"></line><text class="gridtxt" x="2" y="64.2">3k</text><line class="grid" x1="30" x2="346" y1="41.599999999999994" y2="41.599999999999994"></line><text class="gridtxt" x="2" y="44.599999999999994">4k</text><line class="grid" x1="30" x2="346" y1="22" y2="22"></line><text class="gridtxt" x="2" y="25">5k</text><path d="M30,72.96000000000001 C61.6,72.96000000000001 61.6,54.2224 93.2,54.2224 C124.80000000000001,54.2224 124.80000000000001,31.6824 156.4,31.6824 C188,31.6824 188,28.271999999999995 219.6,28.271999999999995 C251.2,28.271999999999995 251.2,61.2 282.8,61.2 C314.4,61.2 314.4,72.96000000000001 346,72.96000000000001 L346,120 L30,120 Z" fill="url(#g)"></path><path d="M30,72.96000000000001 C61.6,72.96000000000001 61.6,54.2224 93.2,54.2224 C124.80000000000001,54.2224 124.80000000000001,31.6824 156.4,31.6824 C188,31.6824 188,28.271999999999995 219.6,28.271999999999995 C251.2,28.271999999999995 251.2,61.2 282.8,61.2 C314.4,61.2 314.4,72.96000000000001 346,72.96000000000001" fill="none" stroke="var(--glacier)" stroke-width="2.2"></path><circle cx="30" cy="72.96000000000001" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="30" y="64.96000000000001" text-anchor="start">2,400</text>
+      <text class="lbl" x="30" y="133" text-anchor="start">리장</text><circle cx="93.2" cy="54.2224" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="93.2" y="46.2224" text-anchor="middle">3,356</text>
+      <text class="lbl" x="93.2" y="144" text-anchor="middle">케이블카 하부</text><circle cx="156.4" cy="31.6824" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="156.4" y="23.6824" text-anchor="middle">4,506</text>
+      <text class="lbl" x="156.4" y="133" text-anchor="middle">빙천공원</text><circle cx="219.6" cy="28.271999999999995" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="219.6" y="20.271999999999995" text-anchor="middle">4,680</text>
+      <text class="lbl" x="219.6" y="144" text-anchor="middle">전망대</text><circle cx="282.8" cy="61.2" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="282.8" y="53.2" text-anchor="middle">3,000</text>
+      <text class="lbl" x="282.8" y="133" text-anchor="middle">람월곡</text><circle cx="346" cy="72.96000000000001" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="346" y="64.96000000000001" text-anchor="end">2,400</text>
+      <text class="lbl" x="346" y="144" text-anchor="end">리장</text></svg><div class="alt-title">붉은 띠 = 3,000m 이상 고산 구간 (단위 m)</div></div></details>
+    <div class="forecast">실시간 예보 (墨迹天气 · 중국에서도 접속됨)<div class="fl"><a href="https://tianqi.moji.com/forecast15/china/yunnan/lijiang" target="_blank" rel="noopener">리장</a><a href="https://tianqi.moji.com/forecast15/china/yunnan/lanyue-valley-scenic-area" target="_blank" rel="noopener">람월곡·설산 일대</a></div></div>
+    
+  </div></section><section class="static" id="s-d4"><div class="stitle">10.10 토 · 호도협·샹그릴라</div><div class="panel" role="tabpanel">
+    <div class="day-head">
+      <div class="date">4일차 · 10.10 (토)</div>
+      <h2>호도협을 지나 샹그릴라로</h2>
+      <div class="facts"><span>기온<b>호도협 20–25° · 샹그릴라 3–17°</b></span><span>최고 고도<b>3,300m</b></span><span>숙박<b>샹그릴라 호텔</b></span></div>
+    </div>
+    <div class="fcbox"><b>현지 예보</b> 샹그릴라 낮 구름, 밤 약한 비 · 최고 17° / 최저 3° (리장 23°/9°)<small>墨迹天气 10/1 조회 · 7일 이후는 참고용, 출발 2–3일 전 재확인</small></div>
+    <div class="daytip"><b>오늘 핵심</b> 하루에 여름(호도협 25°C 안팎)과 초겨울(샹그릴라 밤 0~5°C)을 모두 겪습니다. 얇게 여러 겹 입고 벗는 게 정답. 샹그릴라 첫날 밤은 무리한 음주·장시간 샤워를 피하세요.</div>
+    
+    <details class="slot m" open="">
+    <summary><h3>오전</h3><span class="time">08:00–12:00</span><span class="sumtemp">18–24°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">18–24°C</span>계곡 안쪽은 덥고 햇볕 강함</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>장강제일만</strong><span class="cn">长江第一湾</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=First%20Bend%20of%20the%20Yangtze%20River" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E9%95%BF%E6%B1%9F%E7%AC%AC%E4%B8%80%E6%B9%BE" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%9E%A5%EA%B0%95%EC%A0%9C%EC%9D%BC%EB%A7%8C%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%9E%A5%EA%B0%95%EC%A0%9C%EC%9D%BC%EB%A7%8C" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E9%95%BF%E6%B1%9F%E7%AC%AC%E4%B8%80%E6%B9%BE" target="_blank" rel="noopener">바이두</a></div></div><div class="place"><strong>호도협(상호도협)</strong><span class="cn">虎跳峡 上虎跳</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Upper%20Tiger%20Leaping%20Gorge" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%8A%E8%99%8E%E8%B7%B3" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%ED%98%B8%EB%8F%84%ED%98%91%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%ED%98%B8%EB%8F%84%ED%98%91" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E8%99%8E%E8%B7%B3%E5%B3%A1" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">호도협은 옥룡설산과 하바설산 사이를 금사강(장강 상류)이 깎아 만든 세계 최대급 협곡입니다. ‘호랑이가 바위를 딛고 건너뛰었다’는 전설의 바위까지 계단으로 내려가는데, 왕복 수백 계단이라 돌아오는 오르막이 힘듭니다. 물보라에 바닥이 젖어 있어요.</div></div>
+      <div class="row"><div class="k">선택관광</div><div class="v"><a class="optchip" href="#opt-trek" data-goopt="trek">호도협 미니트레킹 · USD 50 · 약 3시간</a><a class="optchip" href="#opt-esc" data-goopt="esc">호도협 에스컬레이터 (왕복) · USD 20 · 약 10분</a></div></div>
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>물 500ml 이상</li><li>손수건/쿨토시</li><li>계단용 무릎 보호대(필요 시)</li><li>방수 휴대폰 파우치</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>반팔 + 얇은 긴팔 겹쳐</dd><dt>하의</dt><dd>신축성 있는 긴바지</dd><dt>겉옷</dt><dd>가방에</dd><dt>신발</dt><dd>접지력 좋은 트레킹화</dd></dl></div></div>
+    </div></details><details class="slot n" open="">
+    <summary><h3>낮</h3><span class="time">12:00–17:00</span><span class="sumtemp">12–17°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">12–17°C</span>샹그릴라 낮 구름 많음 · 고원으로 오르며 기온 하락 · 바람</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>샹그릴라로 이동(약 2–3시간)</strong><span class="cn">香格里拉</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Shangri-La%20Yunnan" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E5%B8%82" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%83%B9%EA%B7%B8%EB%A6%B4%EB%9D%BC%EB%A1%9C%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%83%B9%EA%B7%B8%EB%A6%B4%EB%9D%BC%EB%A1%9C" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89" target="_blank" rel="noopener">바이두</a></div></div><div class="place"><strong>나파해 초원</strong><span class="cn">纳帕海</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Napa%20Lake%20Shangri-La" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%BA%B3%E5%B8%95%E6%B5%B7" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%82%98%ED%8C%8C%ED%95%B4%20%EC%B4%88%EC%9B%90%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%82%98%ED%8C%8C%ED%95%B4%20%EC%B4%88%EC%9B%90" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E7%BA%B3%E5%B8%95%E6%B5%B7" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">차창 밖으로 티베트식 가옥과 초원이 펼쳐집니다. 나파해는 계절 호수를 품은 고원 초원으로, 10월에는 풀이 황금빛으로 물들기 시작합니다. 일정에 없으면 이동 중 차창 감상.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>멀미약(산길)</li><li>입술 보습제(매우 건조)</li><li>선글라스</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔 + 후리스</dd><dt>하의</dt><dd>긴바지</dd><dt>겉옷</dt><dd>바람막이</dd><dt>신발</dt><dd>트레킹화</dd></dl></div></div>
+    </div></details><details class="slot e" open="">
+    <summary><h3>저녁</h3><span class="time">18:00 이후</span><span class="sumtemp">3–6°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">3–6°C</span>밤에 약한 비 예보 · 체감은 더 추움</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>독극종 고성</strong><span class="cn">独克宗古城</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Dukezong%20Ancient%20Town" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%8B%AC%E5%85%8B%E5%AE%97%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%8F%85%EA%B7%B9%EC%A2%85%20%EA%B3%A0%EC%84%B1%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%8F%85%EA%B7%B9%EC%A2%85%20%EA%B3%A0%EC%84%B1" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E7%8B%AC%E5%85%8B%E5%AE%97%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">바이두</a></div></div><div class="place"><strong>구산공원 대형 마니차</strong><span class="cn">龟山公园 转经筒</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Guishan%20Park%20Prayer%20Wheel%20Shangri-La" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E9%BE%9F%E5%B1%B1%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EA%B5%AC%EC%82%B0%EA%B3%B5%EC%9B%90%20%EB%8C%80%ED%98%95%20%EB%A7%88%EB%8B%88%EC%B0%A8%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EA%B5%AC%EC%82%B0%EA%B3%B5%EC%9B%90%20%EB%8C%80%ED%98%95%20%EB%A7%88%EB%8B%88%EC%B0%A8" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E9%BE%9F%E5%B1%B1%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">독극종은 차마고도의 1,300년 된 티베트 마을입니다. 언덕 위 구산공원에는 세계 최대급 황금 마니차(전경통)가 있어 여럿이 함께 시계방향으로 돌립니다. 언덕 계단이 짧지만 3,300m라 숨이 차니 천천히.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>패딩 필수</li><li>장갑·비니</li><li>핫팩</li><li>보온병</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>기능성 긴팔 + 후리스</dd><dt>하의</dt><dd>기모 바지</dd><dt>겉옷</dt><dd>두툼한 경량패딩 이상</dd><dt>신발</dt><dd>트레킹화 + 두꺼운 양말</dd></dl></div></div>
+    </div></details>
+    <details class="card"><summary>오늘의 이동 경로</summary><div class="mapbox"><svg viewBox="0 0 360 360" role="img" aria-label="이동 경로 확대 지도"><path d="M204.6573761567755,247.89221556886213 l11.200000000000001,-19.200000000000003 l8,11.200000000000001 l8,-16 l11.200000000000001,24 z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"></path><path d="M670.3211758301532,637.5939031028862 Q494.652150244962,405.790745781166 232.9123571039731,278.9657049537289" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M234.67610234077063,275.0462710941754 Q233.79422972237188,277.0059880239521 232.9123571039731,278.9657049537289" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M232.9123571039731,278.9657049537289 Q229.38486663037432,256.4289602612955 225.85737615677553,233.89221556886213" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M225.85737615677553,233.89221556886213 Q231.1486118671731,230.95264017419714 236.43984757757065,228.01306477953213" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M236.43984757757065,228.01306477953213 Q234.67610234077188,253.48938486663053 232.9123571039731,278.9657049537289" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M232.9123571039731,278.9657049537289 Q208.2199237887853,277.9858464888407 183.52749047359754,277.0059880239525" fill="none" stroke="var(--juniper)" stroke-width="3.5" stroke-linecap="round"></path><path d="M183.52749047359754,277.0059880239525 Q194.9918345127914,246.63037561241165 206.4561785519853,216.2547632008708" fill="none" stroke="var(--juniper)" stroke-width="3.5" stroke-linecap="round"></path><path d="M206.4561785519853,216.2547632008708 Q166.77191072400484,148.64452912357095 127.08764289602438,81.03429504627108" fill="none" stroke="var(--juniper)" stroke-width="3.5" stroke-linecap="round"></path><path d="M127.08764289602438,81.03429504627108 Q133.26075122482195,86.91344583560141 139.43385955361953,92.79259662493172" fill="none" stroke="var(--juniper)" stroke-width="3.5" stroke-linecap="round"></path><path d="M141.19760479041705,84.95372890582463 Q472.0762112139325,297.77898747958704 670.3211758301532,637.5939031028862" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M670.3211758301532,637.5939031028862 Q724.9972781709263,659.150789330431 779.6733805116994,680.7076755579759" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M779.6733805116994,680.7076755579759 Q744.3984757757178,653.2716385411004 709.1235710397361,625.8356015242249" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><circle cx="232.9123571039731" cy="278.9657049537289" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="242.9123571039731" y="294.9657049537289" text-anchor="start">리장고성</text><circle cx="234.67610234077063" cy="275.0462710941754" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="225.85737615677553" cy="233.89221556886213" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="236.43984757757065" cy="228.01306477953213" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="183.52749047359754" cy="277.0059880239525" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="183.52749047359754" y="295.0059880239525" text-anchor="middle">장강제일만</text><circle cx="206.4561785519853" cy="216.2547632008708" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="197.4561785519853" y="212.2547632008708" text-anchor="end">호도협</text><circle cx="127.08764289602438" cy="81.03429504627108" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="118.08764289602438" y="85.03429504627108" text-anchor="end">나파해</text><circle cx="139.43385955361953" cy="92.79259662493172" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="148.43385955361953" y="104.79259662493172" text-anchor="start">샹그릴라</text><circle cx="141.19760479041705" cy="84.95372890582463" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><text class="mgt" x="348" y="352" text-anchor="end">리장–샹그릴라 일대 확대</text></svg><div class="legend"><span><i style="background:var(--juniper)"></i>10.10 토 호도협·샹그릴라</span><span><i class="dash"></i>항공·열차 이동</span></div></div></details>
+    <details class="card"><summary>오늘의 고도 변화</summary><div class="alt"><svg viewBox="0 0 360 158" role="img" aria-label="고도 변화(미터)">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--glacier)" stop-opacity=".45"></stop><stop offset="1" stop-color="var(--glacier)" stop-opacity=".05"></stop></linearGradient></defs>
+    <rect class="danger" x="30" y="22" width="316" height="39.2"></rect><line class="grid" x1="30" x2="346" y1="100.4" y2="100.4"></line><text class="gridtxt" x="2" y="103.4">1k</text><line class="grid" x1="30" x2="346" y1="80.8" y2="80.8"></line><text class="gridtxt" x="2" y="83.8">2k</text><line class="grid" x1="30" x2="346" y1="61.2" y2="61.2"></line><text class="gridtxt" x="2" y="64.2">3k</text><line class="grid" x1="30" x2="346" y1="41.599999999999994" y2="41.599999999999994"></line><text class="gridtxt" x="2" y="44.599999999999994">4k</text><line class="grid" x1="30" x2="346" y1="22" y2="22"></line><text class="gridtxt" x="2" y="25">5k</text><path d="M30,72.96000000000001 C69.5,72.96000000000001 69.5,83.74000000000001 109,83.74000000000001 C148.5,83.74000000000001 148.5,84.72 188,84.72 C227.5,84.72 227.5,55.907999999999994 267,55.907999999999994 C306.5,55.907999999999994 306.5,55.32 346,55.32 L346,120 L30,120 Z" fill="url(#g)"></path><path d="M30,72.96000000000001 C69.5,72.96000000000001 69.5,83.74000000000001 109,83.74000000000001 C148.5,83.74000000000001 148.5,84.72 188,84.72 C227.5,84.72 227.5,55.907999999999994 267,55.907999999999994 C306.5,55.907999999999994 306.5,55.32 346,55.32" fill="none" stroke="var(--glacier)" stroke-width="2.2"></path><circle cx="30" cy="72.96000000000001" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="30" y="64.96000000000001" text-anchor="start">2,400</text>
+      <text class="lbl" x="30" y="133" text-anchor="start">리장</text><circle cx="109" cy="83.74000000000001" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="109" y="75.74000000000001" text-anchor="middle">1,850</text>
+      <text class="lbl" x="109" y="144" text-anchor="middle">장강제일만</text><circle cx="188" cy="84.72" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="188" y="76.72" text-anchor="middle">1,800</text>
+      <text class="lbl" x="188" y="133" text-anchor="middle">호도협</text><circle cx="267" cy="55.907999999999994" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="267" y="47.907999999999994" text-anchor="middle">3,270</text>
+      <text class="lbl" x="267" y="144" text-anchor="middle">나파해</text><circle cx="346" cy="55.32" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="346" y="47.32" text-anchor="end">3,300</text>
+      <text class="lbl" x="346" y="133" text-anchor="end">샹그릴라</text></svg><div class="alt-title">붉은 띠 = 3,000m 이상 고산 구간 (단위 m)</div></div></details>
+    <div class="forecast">실시간 예보 (墨迹天气 · 중국에서도 접속됨)<div class="fl"><a href="https://tianqi.moji.com/forecast15/china/yunnan/shangri-la-shanghutiao-scenic-area" target="_blank" rel="noopener">호도협</a><a href="https://tianqi.moji.com/forecast15/china/yunnan/shangri-la" target="_blank" rel="noopener">샹그릴라</a></div></div>
+    
+  </div></section><section class="static" id="s-d5"><div class="stitle">10.11 일 · 송찬림사·석림</div><div class="panel" role="tabpanel">
+    <div class="day-head">
+      <div class="date">5일차 · 10.11 (일)</div>
+      <h2>송찬림사, 쿤밍 석림, 그리고 출국</h2>
+      <div class="facts"><span>기온<b>샹그릴라 2–17° · 쿤밍 15–24°</b></span><span>최고 고도<b>3,380m</b></span><span>숙박<b>기내(심야편)</b></span></div>
+    </div>
+    <div class="fcbox"><b>현지 예보</b> 샹그릴라 흐림→밤 맑음 17°/2° · 쿤밍·석림 약한 비 24°/15°<small>墨迹天气 10/1 조회 · 7일 이후는 참고용, 출발 2–3일 전 재확인</small></div>
+    <div class="daytip"><b>오늘 핵심</b> 아침 영상 2~7°C → 오후 24°C로 기온 폭이 이번 여행 최대입니다. 짐은 오늘 아침 최종 정리(심야 출국). 석림에서 겉옷을 벗어 넣을 여유 공간을 남겨 두세요.</div>
+    
+    <details class="slot m" open="">
+    <summary><h3>오전</h3><span class="time">07:30–11:30</span><span class="sumtemp">2–8°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">2–8°C</span>흐림 · 이번 여행 가장 추운 아침(최저 2°)</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>송찬림사</strong><span class="cn">松赞林寺</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Songzanlin%20Monastery" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E6%9D%BE%E8%B5%9E%E6%9E%97%E5%AF%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%86%A1%EC%B0%AC%EB%A6%BC%EC%82%AC%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%86%A1%EC%B0%AC%EB%A6%BC%EC%82%AC" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E6%9D%BE%E8%B5%9E%E6%9E%97%E5%AF%BA" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">‘작은 포탈라궁’으로 불리는 운남 최대의 티베트 불교 사원(17세기 창건). 본당까지 경사 계단(약 140여 칸)을 오릅니다. 법당 내부는 촬영 금지 구역이 많고, 탑·마니차는 시계방향으로 돕니다. 승려 정면 촬영은 양해를 구하세요.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>여권</li><li>모자 벗을 준비(법당 내부)</li><li>선글라스·선크림</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔 + 후리스</dd><dt>하의</dt><dd>긴바지(노출 자제)</dd><dt>겉옷</dt><dd>경량패딩(오전), 해 뜨면 벗기</dd><dt>신발</dt><dd>트레킹화</dd></dl></div></div>
+    </div></details><details class="slot n" open="">
+    <summary><h3>낮</h3><span class="time">12:00–18:00</span><span class="sumtemp">21–24°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">21–24°C</span>쿤밍·석림 약한 비 예보 · 석림은 바위길이라 우비가 우산보다 편함</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>샹그릴라 → 쿤밍 이동</strong><span class="cn">迪庆香格里拉机场</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Diqing%20Shangri-La%20Airport" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E8%BF%AA%E5%BA%86%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%83%B9%EA%B7%B8%EB%A6%B4%EB%9D%BC%20%E2%86%92%20%EC%BF%A4%EB%B0%8D%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%83%B9%EA%B7%B8%EB%A6%B4%EB%9D%BC%20%E2%86%92%20%EC%BF%A4%EB%B0%8D" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E8%BF%AA%E5%BA%86%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">바이두</a></div></div><div class="place"><strong>석림 풍경구(대석림·소석림)</strong><span class="cn">石林风景区</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Stone%20Forest%20Kunming" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%9F%B3%E6%9E%97%E9%A3%8E%E6%99%AF%E5%8C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%84%9D%EB%A6%BC%20%ED%92%8D%EA%B2%BD%EA%B5%AC%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%84%9D%EB%A6%BC%20%ED%92%8D%EA%B2%BD%EA%B5%AC" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E7%9F%B3%E6%9E%97%E9%A3%8E%E6%99%AF%E5%8C%BA" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">쿤밍으로 이동 후(국내선 약 1시간 또는 열차) 석림으로. 석림은 약 2억 7천만 년 전 바닷속 석회암이 융기·침식되어 만들어진 카르스트 지형으로 세계자연유산입니다. 전동카로 이동하며 좁은 바위 미로를 걷습니다.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>얇은 우비</li><li>물·선크림</li><li>모자</li><li>패딩 넣을 접이식 가방</li><li>3C 인증 보조배터리</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>반팔(긴팔 위에 겹쳐 입었다면 벗기)</dd><dt>하의</dt><dd>가벼운 긴바지</dd><dt>겉옷</dt><dd>가방에</dd><dt>신발</dt><dd>운동화</dd></dl></div></div>
+    </div></details><details class="slot e" open="">
+    <summary><h3>저녁</h3><span class="time">18:00 이후 · 출발 23시대</span><span class="sumtemp">15–17°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">15–17°C</span>쿤밍 밤, 약한 비</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>쿤밍 창수이 국제공항</strong><span class="cn">昆明长水国际机场</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Kunming%20Changshui%20International%20Airport" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E6%98%86%E6%98%8E%E9%95%BF%E6%B0%B4%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%BF%A4%EB%B0%8D%20%EC%B0%BD%EC%88%98%EC%9D%B4%20%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%BF%A4%EB%B0%8D%20%EC%B0%BD%EC%88%98%EC%9D%B4%20%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E6%98%86%E6%98%8E%E9%95%BF%E6%B0%B4%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">석식 후 공항 이동, 심야편으로 인천 출발(대한항공 기준 23시대). 남은 위안화는 공항에서 쓰거나 다음 여행용으로 보관. 면세 한도(입국 시 1인 US$800)를 확인하세요.</div></div>
+      <div class="row"><div class="k">선택관광</div><div class="v"><a class="optchip" href="#opt-massage_km" data-goopt="massage_km">전신마사지 (쿤밍) · USD 40 · 약 1시간</a></div></div>
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>기내용 목베개·안대</li><li>얇은 담요 대용 후리스</li><li>보조배터리 기내 반입</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔</dd><dt>하의</dt><dd>편한 바지</dd><dt>겉옷</dt><dd>후리스(기내용)</dd><dt>신발</dt><dd>운동화</dd></dl></div></div>
+    </div></details>
+    <details class="card"><summary>오늘의 이동 경로</summary><div class="mapbox"><svg viewBox="0 0 360 380" role="img" aria-label="일정 경로 지도">
+    <defs><clipPath id="icd5"><rect x="188" y="12" width="160" height="200" rx="8"></rect></clipPath></defs>
+    <line class="mgrid" x1="3.7894736842103107" x2="3.7894736842103107" y1="0" y2="380"></line><text class="mgt" x="6.789473684210311" y="376">99°E</text><line class="mgrid" x1="79.57894736842084" x2="79.57894736842084" y1="0" y2="380"></line><text class="mgt" x="82.57894736842084" y="376">100°E</text><line class="mgrid" x1="155.36842105263136" x2="155.36842105263136" y1="0" y2="380"></line><text class="mgt" x="158.36842105263136" y="376">101°E</text><line class="mgrid" x1="231.1578947368419" x2="231.1578947368419" y1="0" y2="380"></line><text class="mgt" x="234.1578947368419" y="376">102°E</text><line class="mgrid" x1="306.94736842105243" x2="306.94736842105243" y1="0" y2="380"></line><text class="mgt" x="309.94736842105243" y="376">103°E</text><line class="mgrid" x1="0" x2="360" y1="332.50000000000006" y2="332.50000000000006"></line><text class="mgt" x="3" y="329.50000000000006">25°N</text><line class="mgrid" x1="0" x2="360" y1="226.94444444444443" y2="226.94444444444443"></line><text class="mgt" x="3" y="223.94444444444443">26°N</text><line class="mgrid" x1="0" x2="360" y1="121.3888888888888" y2="121.3888888888888"></line><text class="mgt" x="3" y="118.3888888888888">27°N</text><line class="mgrid" x1="0" x2="360" y1="15.833333333333192" y2="15.833333333333192"></line><text class="mgt" x="3" y="12.833333333333192">28°N</text><path d="M82.37894736842065,116.8333333333331 l5.6000000000000005,-9.600000000000001 l4,5.6000000000000005 l4,-8 l5.6000000000000005,12 z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"></path><path d="M284.9684210526309,328.2777777777779 Q214.16947368421026,209.13949707602345 97.01052631578956,135.11111111111094" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M97.76842105263097,132.9999999999999 Q97.38947368421026,134.05555555555543 97.01052631578956,135.11111111111094" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M97.01052631578956,135.11111111111094 Q95.49473684210511,122.97222222222203 93.97894736842066,110.8333333333331" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M93.97894736842066,110.8333333333331 Q96.25263157894707,109.24999999999989 98.52631578947347,107.66666666666669" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M98.52631578947347,107.66666666666669 Q97.76842105263151,121.38888888888881 97.01052631578956,135.11111111111094" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M97.01052631578956,135.11111111111094 Q86.40000000000003,134.58333333333326 75.78947368421052,134.0555555555556" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M75.78947368421052,134.0555555555556 Q80.71578947368403,117.69444444444436 85.64210526315755,101.33333333333312" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M85.64210526315755,101.33333333333312 Q68.58947368421008,64.91666666666654 51.5368421052626,28.49999999999997" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M51.5368421052626,28.49999999999997 Q54.18947368421025,31.666666666666572 56.8421052631579,34.83333333333317" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M57.59999999999931,30.61111111111104 Q207.00421052631515,152.16023391812865 284.9684210526309,328.2777777777779" fill="none" stroke="var(--maroon)" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M284.9684210526309,328.2777777777779 Q308.46315789473636,339.88888888888897 331.95789473684175,351.50000000000006" fill="none" stroke="var(--maroon)" stroke-width="3" stroke-linecap="round"></path><path d="M331.95789473684175,351.50000000000006 Q316.79999999999995,336.7222222222222 301.6421052631582,321.94444444444434" fill="none" stroke="var(--maroon)" stroke-width="3" stroke-linecap="round"></path><circle cx="284.9684210526309" cy="328.2777777777779" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="276.9684210526309" y="320.2777777777779" text-anchor="end">쿤밍</text><circle cx="301.6421052631582" cy="321.94444444444434" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="309.6421052631582" y="325.94444444444434" text-anchor="start">쿤밍공항</text><circle cx="97.01052631578956" cy="135.11111111111094" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="97.76842105263097" cy="132.9999999999999" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="93.97894736842066" cy="110.8333333333331" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="98.52631578947347" cy="107.66666666666669" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="75.78947368421052" cy="134.0555555555556" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="85.64210526315755" cy="101.33333333333312" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="51.5368421052626" cy="28.49999999999997" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="56.8421052631579" cy="34.83333333333317" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="57.59999999999931" cy="30.61111111111104" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="331.95789473684175" cy="351.50000000000006" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="323.95789473684175" y="367.50000000000006" text-anchor="end">석림</text>
+    <rect x="11.368421052630932" y="13.722222222222126" width="132.6315789473684" height="137.22222222222237" fill="none" stroke="var(--sub)" stroke-dasharray="3 3"></rect>
+    <line x1="143.99999999999935" y1="13.722222222222126" x2="188" y2="12" stroke="var(--sub)" stroke-dasharray="3 3"></line>
+    <line x1="143.99999999999935" y1="150.94444444444449" x2="188" y2="212" stroke="var(--sub)" stroke-dasharray="3 3"></line>
+    <rect x="188" y="12" width="160" height="200" rx="8" fill="var(--paper)" stroke="var(--sub)"></rect>
+    <g clip-path="url(#icd5)" class="inset"><path d="M266.4571428571432,167.53846153846118 l11.200000000000001,-19.200000000000003 l8,11.200000000000001 l8,-16 l11.200000000000001,24 z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"></path><path d="M518.0571428571428,470.4615384615383 Q438.4703296703301,302.4831648351647 291.3142857142866,188.92307692307662" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M292.2285714285715,185.8461538461536 Q291.77142857142906,187.38461538461513 291.3142857142866,188.92307692307662" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M291.3142857142866,188.92307692307662 Q289.4857142857149,171.23076923076889 287.6571428571432,153.53846153846118" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M287.6571428571432,153.53846153846118 Q290.40000000000043,151.23076923076906 293.1428571428577,148.92307692307693" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M293.1428571428577,148.92307692307693 Q292.22857142857214,168.9230769230768 291.3142857142866,188.92307692307662" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M291.3142857142866,188.92307692307662 Q278.51428571428653,188.15384615384602 265.71428571428646,187.3846153846154" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M265.71428571428646,187.3846153846154 Q271.6571428571434,163.53846153846138 277.60000000000036,139.69230769230737" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M277.60000000000036,139.69230769230737 Q257.0285714285717,86.6153846153845 236.45714285714297,33.53846153846162" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M236.45714285714297,33.53846153846162 Q239.6571428571433,38.15384615384613 242.85714285714363,42.769230769230646" fill="none" stroke="var(--line)" stroke-width="1.5" stroke-linecap="round"></path><path d="M243.77142857142852,36.61538461538463 Q432.9758241758241,220.62417582417572 518.0571428571428,470.4615384615383" fill="none" stroke="var(--maroon)" stroke-width="3.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M518.0571428571428,470.4615384615383 Q546.4000000000001,487.38461538461513 574.7428571428575,504.3076923076919" fill="none" stroke="var(--maroon)" stroke-width="3.5" stroke-linecap="round"></path><path d="M574.7428571428575,504.3076923076919 Q556.4571428571436,482.7692307692303 538.1714285714297,461.2307692307687" fill="none" stroke="var(--maroon)" stroke-width="3.5" stroke-linecap="round"></path><circle cx="291.3142857142866" cy="188.92307692307662" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="292.2285714285715" cy="185.8461538461536" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="287.6571428571432" cy="153.53846153846118" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="293.1428571428577" cy="148.92307692307693" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="265.71428571428646" cy="187.3846153846154" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="277.60000000000036" cy="139.69230769230737" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="236.45714285714297" cy="33.53846153846162" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="242.85714285714363" cy="42.769230769230646" r="3" fill="var(--line)" stroke="var(--line)" stroke-width="1.6"></circle><circle cx="243.77142857142852" cy="36.61538461538463" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="252.77142857142852" y="32.61538461538463" text-anchor="start">송찬림사</text></g>
+    
+  </svg><div class="legend"><span><i style="background:var(--maroon)"></i>10.11 일 송찬림사·석림</span><span><i class="dash"></i>항공·열차 이동</span></div></div></details>
+    <details class="card"><summary>오늘의 고도 변화</summary><div class="alt"><svg viewBox="0 0 360 158" role="img" aria-label="고도 변화(미터)">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--glacier)" stop-opacity=".45"></stop><stop offset="1" stop-color="var(--glacier)" stop-opacity=".05"></stop></linearGradient></defs>
+    <rect class="danger" x="30" y="22" width="316" height="39.2"></rect><line class="grid" x1="30" x2="346" y1="100.4" y2="100.4"></line><text class="gridtxt" x="2" y="103.4">1k</text><line class="grid" x1="30" x2="346" y1="80.8" y2="80.8"></line><text class="gridtxt" x="2" y="83.8">2k</text><line class="grid" x1="30" x2="346" y1="61.2" y2="61.2"></line><text class="gridtxt" x="2" y="64.2">3k</text><line class="grid" x1="30" x2="346" y1="41.599999999999994" y2="41.599999999999994"></line><text class="gridtxt" x="2" y="44.599999999999994">4k</text><line class="grid" x1="30" x2="346" y1="22" y2="22"></line><text class="gridtxt" x="2" y="25">5k</text><path d="M30,55.32 C69.5,55.32 69.5,53.751999999999995 109,53.751999999999995 C148.5,53.751999999999995 148.5,82.956 188,82.956 C227.5,82.956 227.5,85.7 267,85.7 C306.5,85.7 306.5,78.84 346,78.84 L346,120 L30,120 Z" fill="url(#g)"></path><path d="M30,55.32 C69.5,55.32 69.5,53.751999999999995 109,53.751999999999995 C148.5,53.751999999999995 148.5,82.956 188,82.956 C227.5,82.956 227.5,85.7 267,85.7 C306.5,85.7 306.5,78.84 346,78.84" fill="none" stroke="var(--glacier)" stroke-width="2.2"></path><circle cx="30" cy="55.32" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="30" y="47.32" text-anchor="start">3,300</text>
+      <text class="lbl" x="30" y="133" text-anchor="start">샹그릴라</text><circle cx="109" cy="53.751999999999995" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="109" y="45.751999999999995" text-anchor="middle">3,380</text>
+      <text class="lbl" x="109" y="144" text-anchor="middle">송찬림사</text><circle cx="188" cy="82.956" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="188" y="74.956" text-anchor="middle">1,890</text>
+      <text class="lbl" x="188" y="133" text-anchor="middle">쿤밍</text><circle cx="267" cy="85.7" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="267" y="77.7" text-anchor="middle">1,750</text>
+      <text class="lbl" x="267" y="144" text-anchor="middle">석림</text><circle cx="346" cy="78.84" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="346" y="70.84" text-anchor="end">2,100</text>
+      <text class="lbl" x="346" y="133" text-anchor="end">쿤밍 공항</text></svg><div class="alt-title">붉은 띠 = 3,000m 이상 고산 구간 (단위 m)</div></div></details>
+    <div class="forecast">실시간 예보 (墨迹天气 · 중국에서도 접속됨)<div class="fl"><a href="https://tianqi.moji.com/forecast15/china/yunnan/gedan-songzanlin-lamasery" target="_blank" rel="noopener">송찬림사</a><a href="https://tianqi.moji.com/forecast15/china/yunnan/shilin-scenic-spot" target="_blank" rel="noopener">석림</a><a href="https://tianqi.moji.com/forecast15/china/yunnan/kunming" target="_blank" rel="noopener">쿤밍</a></div></div>
+    
+  </div></section><section class="static" id="s-d6"><div class="stitle">10.12 월 · 귀국</div><div class="panel" role="tabpanel">
+    <div class="day-head">
+      <div class="date">6일차 · 10.12 (월)</div>
+      <h2>인천 새벽 도착</h2>
+      <div class="facts"><span>기온<b>서울 새벽 10° 안팎</b></span><span>최고 고도<b>1,890m</b></span><span>숙박<b>집</b></span></div>
+    </div>
+    
+    <div class="daytip"><b>오늘 핵심</b> 새벽 도착 후 바로 출근이라면 회사용 옷 한 벌을 캐리어 맨 위에 두세요. 고지대에서 내려오면 오히려 피곤이 몰려오니 수분과 수면을 우선하세요.</div>
+    
+    <details class="slot m" open="">
+    <summary><h3>새벽</h3><span class="time">04시대–06시대 도착(예정)</span><span class="sumtemp">서울 9–13°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">서울 9–13°C</span>10월 중순 새벽, 쌀쌀</div></div>
+      <div class="row"><div class="k">어디</div><div class="v"><div class="place"><strong>인천국제공항 제2여객터미널</strong>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Incheon%20International%20Airport%20Terminal%202" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%BB%81%E5%B7%9D%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%9D%B8%EC%B2%9C%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%A0%9C2%EC%97%AC%EA%B0%9D%ED%84%B0%EB%AF%B8%EB%84%90%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%9D%B8%EC%B2%9C%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%A0%9C2%EC%97%AC%EA%B0%9D%ED%84%B0%EB%AF%B8%EB%84%90" target="_blank" rel="noopener">위키백과</a></div></div></div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">입국심사·세관. 축산물(육포·소시지)·생과일 반입 금지. 면세 한도 초과 시 자진신고하면 감면됩니다.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>세관 신고 여부 확인</li><li>공항철도·리무진 첫차 시간 확인</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>긴팔</dd><dt>하의</dt><dd>긴바지</dd><dt>겉옷</dt><dd>후리스 또는 재킷</dd><dt>신발</dt><dd>운동화</dd></dl></div></div>
+    </div></details><details class="slot n" open="">
+    <summary><h3>낮</h3><span class="time"></span><span class="sumtemp">서울 19–22°C</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">서울 19–22°C</span>국내 예보 확인</div></div>
+      <div class="row"><div class="k">어디</div><div class="v">—</div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">사진 백업, 여행자보험 청구할 일이 있으면 영수증·진단서 정리(여행 종료 후 청구 가능).</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v"><ul><li>사진 백업</li><li>영수증 정리</li></ul></div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>평상복</dd><dt>하의</dt><dd>—</dd><dt>겉옷</dt><dd>가벼운 재킷</dd><dt>신발</dt><dd>—</dd></dl></div></div>
+    </div></details><details class="slot e" open="">
+    <summary><h3>저녁</h3><span class="time"></span><span class="sumtemp">—</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">—</span>—</div></div>
+      <div class="row"><div class="k">어디</div><div class="v">—</div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">푹 쉬기.</div></div>
+      
+      <div class="row"><div class="k">준비물</div><div class="v">—</div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v"><dl class="wear"><dt>상의</dt><dd>—</dd><dt>하의</dt><dd>—</dd><dt>겉옷</dt><dd>—</dd><dt>신발</dt><dd>—</dd></dl></div></div>
+    </div></details>
+    
+    <details class="card"><summary>오늘의 고도 변화</summary><div class="alt"><svg viewBox="0 0 360 150" role="img" aria-label="고도 변화(미터)">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--glacier)" stop-opacity=".45"></stop><stop offset="1" stop-color="var(--glacier)" stop-opacity=".05"></stop></linearGradient></defs>
+    <rect class="danger" x="30" y="22" width="316" height="39.2"></rect><line class="grid" x1="30" x2="346" y1="100.4" y2="100.4"></line><text class="gridtxt" x="2" y="103.4">1k</text><line class="grid" x1="30" x2="346" y1="80.8" y2="80.8"></line><text class="gridtxt" x="2" y="83.8">2k</text><line class="grid" x1="30" x2="346" y1="61.2" y2="61.2"></line><text class="gridtxt" x="2" y="64.2">3k</text><line class="grid" x1="30" x2="346" y1="41.599999999999994" y2="41.599999999999994"></line><text class="gridtxt" x="2" y="44.599999999999994">4k</text><line class="grid" x1="30" x2="346" y1="22" y2="22"></line><text class="gridtxt" x="2" y="25">5k</text><path d="M30,82.956 C188,82.956 188,119.804 346,119.804 L346,120 L30,120 Z" fill="url(#g)"></path><path d="M30,82.956 C188,82.956 188,119.804 346,119.804" fill="none" stroke="var(--glacier)" stroke-width="2.2"></path><circle cx="30" cy="82.956" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="30" y="74.956" text-anchor="start">1,890</text>
+      <text class="lbl" x="30" y="133" text-anchor="start">쿤밍</text><circle cx="346" cy="119.804" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"></circle>
+      <text class="elev" x="346" y="111.804" text-anchor="end">10</text>
+      <text class="lbl" x="346" y="133" text-anchor="end">인천</text></svg><div class="alt-title">붉은 띠 = 3,000m 이상 고산 구간 (단위 m)</div></div></details>
+    <div class="forecast">실시간 예보 (墨迹天气 · 중국에서도 접속됨)<div class="fl"><a href="https://www.google.com/search?q=%EC%9D%B8%EC%B2%9C%20%EB%82%A0%EC%94%A8" target="_blank" rel="noopener">인천</a></div></div>
+    
+  </div></section><section class="static" id="s-route"><div class="stitle">전체 경로</div><div class="panel" role="tabpanel">
+    <div class="day-head"><div class="date">6일 전체</div><h2>일정 경로 한눈에 보기</h2></div>
+    <div class="mapbox big"><svg viewBox="0 0 360 380" role="img" aria-label="일정 경로 지도">
+    <defs><clipPath id="icall"><rect x="188" y="12" width="160" height="200" rx="8"></rect></clipPath></defs>
+    <line class="mgrid" x1="3.7894736842103107" x2="3.7894736842103107" y1="0" y2="380"></line><text class="mgt" x="6.789473684210311" y="376">99°E</text><line class="mgrid" x1="79.57894736842084" x2="79.57894736842084" y1="0" y2="380"></line><text class="mgt" x="82.57894736842084" y="376">100°E</text><line class="mgrid" x1="155.36842105263136" x2="155.36842105263136" y1="0" y2="380"></line><text class="mgt" x="158.36842105263136" y="376">101°E</text><line class="mgrid" x1="231.1578947368419" x2="231.1578947368419" y1="0" y2="380"></line><text class="mgt" x="234.1578947368419" y="376">102°E</text><line class="mgrid" x1="306.94736842105243" x2="306.94736842105243" y1="0" y2="380"></line><text class="mgt" x="309.94736842105243" y="376">103°E</text><line class="mgrid" x1="0" x2="360" y1="332.50000000000006" y2="332.50000000000006"></line><text class="mgt" x="3" y="329.50000000000006">25°N</text><line class="mgrid" x1="0" x2="360" y1="226.94444444444443" y2="226.94444444444443"></line><text class="mgt" x="3" y="223.94444444444443">26°N</text><line class="mgrid" x1="0" x2="360" y1="121.3888888888888" y2="121.3888888888888"></line><text class="mgt" x="3" y="118.3888888888888">27°N</text><line class="mgrid" x1="0" x2="360" y1="15.833333333333192" y2="15.833333333333192"></line><text class="mgt" x="3" y="12.833333333333192">28°N</text><path d="M82.37894736842065,116.8333333333331 l5.6000000000000005,-9.600000000000001 l4,5.6000000000000005 l4,-8 l5.6000000000000005,12 z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"></path><path d="M284.9684210526309,328.2777777777779 Q214.16947368421026,209.13949707602345 97.01052631578956,135.11111111111094" fill="none" stroke="var(--ochre)" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M97.76842105263097,132.9999999999999 Q97.38947368421026,134.05555555555543 97.01052631578956,135.11111111111094" fill="none" stroke="var(--ochre)" stroke-width="3" stroke-linecap="round"></path><path d="M97.01052631578956,135.11111111111094 Q95.49473684210511,122.97222222222203 93.97894736842066,110.8333333333331" fill="none" stroke="var(--glacier)" stroke-width="3" stroke-linecap="round"></path><path d="M93.97894736842066,110.8333333333331 Q96.25263157894707,109.24999999999989 98.52631578947347,107.66666666666669" fill="none" stroke="var(--glacier)" stroke-width="3" stroke-linecap="round"></path><path d="M98.52631578947347,107.66666666666669 Q97.76842105263151,121.38888888888881 97.01052631578956,135.11111111111094" fill="none" stroke="var(--glacier)" stroke-width="3" stroke-linecap="round"></path><path d="M97.01052631578956,135.11111111111094 Q86.40000000000003,134.58333333333326 75.78947368421052,134.0555555555556" fill="none" stroke="var(--juniper)" stroke-width="3" stroke-linecap="round"></path><path d="M75.78947368421052,134.0555555555556 Q80.71578947368403,117.69444444444436 85.64210526315755,101.33333333333312" fill="none" stroke="var(--juniper)" stroke-width="3" stroke-linecap="round"></path><path d="M85.64210526315755,101.33333333333312 Q68.58947368421008,64.91666666666654 51.5368421052626,28.49999999999997" fill="none" stroke="var(--juniper)" stroke-width="3" stroke-linecap="round"></path><path d="M51.5368421052626,28.49999999999997 Q54.18947368421025,31.666666666666572 56.8421052631579,34.83333333333317" fill="none" stroke="var(--juniper)" stroke-width="3" stroke-linecap="round"></path><path d="M57.59999999999931,30.61111111111104 Q207.00421052631515,152.16023391812865 284.9684210526309,328.2777777777779" fill="none" stroke="var(--maroon)" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M284.9684210526309,328.2777777777779 Q308.46315789473636,339.88888888888897 331.95789473684175,351.50000000000006" fill="none" stroke="var(--maroon)" stroke-width="3" stroke-linecap="round"></path><path d="M331.95789473684175,351.50000000000006 Q316.79999999999995,336.7222222222222 301.6421052631582,321.94444444444434" fill="none" stroke="var(--maroon)" stroke-width="3" stroke-linecap="round"></path><circle cx="284.9684210526309" cy="328.2777777777779" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="276.9684210526309" y="320.2777777777779" text-anchor="end">쿤밍</text><circle cx="301.6421052631582" cy="321.94444444444434" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="309.6421052631582" y="325.94444444444434" text-anchor="start">쿤밍공항</text><circle cx="97.01052631578956" cy="135.11111111111094" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="107.01052631578956" y="149.11111111111094" text-anchor="start">리장고성</text><circle cx="97.76842105263097" cy="132.9999999999999" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="93.97894736842066" cy="110.8333333333331" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="98.52631578947347" cy="107.66666666666669" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="75.78947368421052" cy="134.0555555555556" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="85.64210526315755" cy="101.33333333333312" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="51.5368421052626" cy="28.49999999999997" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="56.8421052631579" cy="34.83333333333317" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="64.84210526315789" y="46.83333333333317" text-anchor="start">샹그릴라</text><circle cx="57.59999999999931" cy="30.61111111111104" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><circle cx="331.95789473684175" cy="351.50000000000006" r="4.5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="323.95789473684175" y="367.50000000000006" text-anchor="end">석림</text>
+    <rect x="11.368421052630932" y="13.722222222222126" width="132.6315789473684" height="137.22222222222237" fill="none" stroke="var(--sub)" stroke-dasharray="3 3"></rect>
+    <line x1="143.99999999999935" y1="13.722222222222126" x2="188" y2="12" stroke="var(--sub)" stroke-dasharray="3 3"></line>
+    <line x1="143.99999999999935" y1="150.94444444444449" x2="188" y2="212" stroke="var(--sub)" stroke-dasharray="3 3"></line>
+    <rect x="188" y="12" width="160" height="200" rx="8" fill="var(--paper)" stroke="var(--sub)"></rect>
+    <g clip-path="url(#icall)" class="inset"><path d="M266.4571428571432,167.53846153846118 l11.200000000000001,-19.200000000000003 l8,11.200000000000001 l8,-16 l11.200000000000001,24 z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"></path><path d="M518.0571428571428,470.4615384615383 Q438.4703296703301,302.4831648351647 291.3142857142866,188.92307692307662" fill="none" stroke="var(--ochre)" stroke-width="3.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M292.2285714285715,185.8461538461536 Q291.77142857142906,187.38461538461513 291.3142857142866,188.92307692307662" fill="none" stroke="var(--ochre)" stroke-width="3.5" stroke-linecap="round"></path><path d="M291.3142857142866,188.92307692307662 Q289.4857142857149,171.23076923076889 287.6571428571432,153.53846153846118" fill="none" stroke="var(--glacier)" stroke-width="3.5" stroke-linecap="round"></path><path d="M287.6571428571432,153.53846153846118 Q290.40000000000043,151.23076923076906 293.1428571428577,148.92307692307693" fill="none" stroke="var(--glacier)" stroke-width="3.5" stroke-linecap="round"></path><path d="M293.1428571428577,148.92307692307693 Q292.22857142857214,168.9230769230768 291.3142857142866,188.92307692307662" fill="none" stroke="var(--glacier)" stroke-width="3.5" stroke-linecap="round"></path><path d="M291.3142857142866,188.92307692307662 Q278.51428571428653,188.15384615384602 265.71428571428646,187.3846153846154" fill="none" stroke="var(--juniper)" stroke-width="3.5" stroke-linecap="round"></path><path d="M265.71428571428646,187.3846153846154 Q271.6571428571434,163.53846153846138 277.60000000000036,139.69230769230737" fill="none" stroke="var(--juniper)" stroke-width="3.5" stroke-linecap="round"></path><path d="M277.60000000000036,139.69230769230737 Q257.0285714285717,86.6153846153845 236.45714285714297,33.53846153846162" fill="none" stroke="var(--juniper)" stroke-width="3.5" stroke-linecap="round"></path><path d="M236.45714285714297,33.53846153846162 Q239.6571428571433,38.15384615384613 242.85714285714363,42.769230769230646" fill="none" stroke="var(--juniper)" stroke-width="3.5" stroke-linecap="round"></path><path d="M243.77142857142852,36.61538461538463 Q432.9758241758241,220.62417582417572 518.0571428571428,470.4615384615383" fill="none" stroke="var(--maroon)" stroke-width="3.5" stroke-dasharray="6 5" stroke-linecap="round"></path><path d="M518.0571428571428,470.4615384615383 Q546.4000000000001,487.38461538461513 574.7428571428575,504.3076923076919" fill="none" stroke="var(--maroon)" stroke-width="3.5" stroke-linecap="round"></path><path d="M574.7428571428575,504.3076923076919 Q556.4571428571436,482.7692307692303 538.1714285714297,461.2307692307687" fill="none" stroke="var(--maroon)" stroke-width="3.5" stroke-linecap="round"></path><circle cx="291.3142857142866" cy="188.92307692307662" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="301.3142857142866" y="204.92307692307662" text-anchor="start">리장고성</text><circle cx="292.2285714285715" cy="185.8461538461536" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="302.2285714285715" y="181.8461538461536" text-anchor="start">흑룡담</text><circle cx="287.6571428571432" cy="153.53846153846118" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="278.6571428571432" y="157.53846153846118" text-anchor="end">옥룡설산 빙천</text><circle cx="293.1428571428577" cy="148.92307692307693" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="302.1428571428577" y="144.92307692307693" text-anchor="start">람월곡</text><circle cx="265.71428571428646" cy="187.3846153846154" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="265.71428571428646" y="205.3846153846154" text-anchor="middle">장강제일만</text><circle cx="277.60000000000036" cy="139.69230769230737" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="268.60000000000036" y="135.69230769230737" text-anchor="end">호도협</text><circle cx="236.45714285714297" cy="33.53846153846162" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="227.45714285714297" y="37.53846153846162" text-anchor="end">나파해</text><circle cx="242.85714285714363" cy="42.769230769230646" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="251.85714285714363" y="54.769230769230646" text-anchor="start">샹그릴라</text><circle cx="243.77142857142852" cy="36.61538461538463" r="5" fill="var(--paper)" stroke="var(--ink)" stroke-width="1.6"></circle><text class="mlbl" x="252.77142857142852" y="32.61538461538463" text-anchor="start">송찬림사</text></g>
+    
+  </svg><div class="legend"><span><i style="background:var(--ochre)"></i>10.8 목 리장고성</span><span><i style="background:var(--glacier)"></i>10.9 금 옥룡설산</span><span><i style="background:var(--juniper)"></i>10.10 토 호도협·샹그릴라</span><span><i style="background:var(--maroon)"></i>10.11 일 송찬림사·석림</span><span><i class="dash"></i>항공·열차 이동</span></div></div>
+    <p class="note">위치 관계를 보여 주는 개략도입니다(실제 도로가 아닌 직선·곡선). 인천–쿤밍 왕복 항공 약 4시간 30분은 지도 밖입니다.</p>
+    <h3 class="sec">관광지 바로가기</h3>
+    <div class="group pl"><div class="pday">10.7 수</div><div class="place"><strong>쿤밍 창수이 국제공항</strong><span class="cn">昆明长水国际机场</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Kunming%20Changshui%20International%20Airport" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E6%98%86%E6%98%8E%E9%95%BF%E6%B0%B4%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%BF%A4%EB%B0%8D%20%EC%B0%BD%EC%88%98%EC%9D%B4%20%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%BF%A4%EB%B0%8D%20%EC%B0%BD%EC%88%98%EC%9D%B4%20%EA%B5%AD%EC%A0%9C%EA%B3%B5%ED%95%AD" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E6%98%86%E6%98%8E%E9%95%BF%E6%B0%B4%E5%9B%BD%E9%99%85%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.8 목</div><div class="place"><strong>쿤밍 → 리장 이동</strong><span class="cn">丽江</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20Yunnan" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%BF%A4%EB%B0%8D%20%E2%86%92%20%EB%A6%AC%EC%9E%A5%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%BF%A4%EB%B0%8D%20%E2%86%92%20%EB%A6%AC%EC%9E%A5" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.8 목</div><div class="place"><strong>흑룡담 공원</strong><span class="cn">黑龙潭公园</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Black%20Dragon%20Pool%20Park%20Lijiang" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E9%BB%91%E9%BE%99%E6%BD%AD%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%ED%9D%91%EB%A3%A1%EB%8B%B4%20%EA%B3%B5%EC%9B%90%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%ED%9D%91%EB%A3%A1%EB%8B%B4%20%EA%B3%B5%EC%9B%90" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E9%BB%91%E9%BE%99%E6%BD%AD%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.8 목</div><div class="place"><strong>리장고성 사방가</strong><span class="cn">丽江古城 四方街</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Sifang%20Street%20Lijiang%20Old%20Town" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E%E5%9B%9B%E6%96%B9%E8%A1%97" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1%20%EC%82%AC%EB%B0%A9%EA%B0%80%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1%20%EC%82%AC%EB%B0%A9%EA%B0%80" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.8 목</div><div class="place"><strong>리장고성 야경</strong><span class="cn">丽江古城</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20Old%20Town" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.8 목</div><div class="place"><strong>고성 객잔 숙박</strong><span class="cn">客栈</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20Old%20Town%20inn" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E%E5%AE%A2%E6%A0%88" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EA%B3%A0%EC%84%B1%20%EA%B0%9D%EC%9E%94%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EA%B3%A0%EC%84%B1%20%EA%B0%9D%EC%9E%94" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E5%AE%A2%E6%A0%88" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.9 금</div><div class="place"><strong>옥룡설산 빙천공원 케이블카</strong><span class="cn">玉龙雪山冰川公园</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Jade%20Dragon%20Snow%20Mountain%20Glacier%20Park" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1%E5%86%B0%E5%B7%9D%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%98%A5%EB%A3%A1%EC%84%A4%EC%82%B0%20%EB%B9%99%EC%B2%9C%EA%B3%B5%EC%9B%90%20%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%98%A5%EB%A3%A1%EC%84%A4%EC%82%B0%20%EB%B9%99%EC%B2%9C%EA%B3%B5%EC%9B%90%20%EC%BC%80%EC%9D%B4%EB%B8%94%EC%B9%B4" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1%E5%86%B0%E5%B7%9D%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.9 금</div><div class="place"><strong>람월곡(블루문 밸리)</strong><span class="cn">蓝月谷</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Blue%20Moon%20Valley%20Lijiang" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%8E%89%E9%BE%99%E9%9B%AA%E5%B1%B1%E8%93%9D%E6%9C%88%E8%B0%B7" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%9E%8C%EC%9B%94%EA%B3%A1%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%9E%8C%EC%9B%94%EA%B3%A1" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E8%93%9D%E6%9C%88%E8%B0%B7" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.9 금</div><div class="place"><strong>인상여강 쇼(선택관광 시)</strong><span class="cn">印象丽江</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Impression%20Lijiang%20Show" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E5%8D%B0%E8%B1%A1%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%9D%B8%EC%83%81%EC%97%AC%EA%B0%95%20%EC%87%BC%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%9D%B8%EC%83%81%EC%97%AC%EA%B0%95%20%EC%87%BC" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E5%8D%B0%E8%B1%A1%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.9 금</div><div class="place"><strong>리장 시내 5성급 호텔</strong><span class="cn">丽江</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20city" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%B8%82" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%A6%AC%EC%9E%A5%20%EC%8B%9C%EB%82%B4%205%EC%84%B1%EA%B8%89%20%ED%98%B8%ED%85%94%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%A6%AC%EC%9E%A5%20%EC%8B%9C%EB%82%B4%205%EC%84%B1%EA%B8%89%20%ED%98%B8%ED%85%94" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.10 토</div><div class="place"><strong>장강제일만</strong><span class="cn">长江第一湾</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=First%20Bend%20of%20the%20Yangtze%20River" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E9%95%BF%E6%B1%9F%E7%AC%AC%E4%B8%80%E6%B9%BE" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%9E%A5%EA%B0%95%EC%A0%9C%EC%9D%BC%EB%A7%8C%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%9E%A5%EA%B0%95%EC%A0%9C%EC%9D%BC%EB%A7%8C" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E9%95%BF%E6%B1%9F%E7%AC%AC%E4%B8%80%E6%B9%BE" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.10 토</div><div class="place"><strong>호도협(상호도협)</strong><span class="cn">虎跳峡 上虎跳</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Upper%20Tiger%20Leaping%20Gorge" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%8A%E8%99%8E%E8%B7%B3" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%ED%98%B8%EB%8F%84%ED%98%91%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%ED%98%B8%EB%8F%84%ED%98%91" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E8%99%8E%E8%B7%B3%E5%B3%A1" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.10 토</div><div class="place"><strong>샹그릴라로 이동(약 2–3시간)</strong><span class="cn">香格里拉</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Shangri-La%20Yunnan" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E5%B8%82" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%83%B9%EA%B7%B8%EB%A6%B4%EB%9D%BC%EB%A1%9C%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%83%B9%EA%B7%B8%EB%A6%B4%EB%9D%BC%EB%A1%9C" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.10 토</div><div class="place"><strong>나파해 초원</strong><span class="cn">纳帕海</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Napa%20Lake%20Shangri-La" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%BA%B3%E5%B8%95%E6%B5%B7" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%82%98%ED%8C%8C%ED%95%B4%20%EC%B4%88%EC%9B%90%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%82%98%ED%8C%8C%ED%95%B4%20%EC%B4%88%EC%9B%90" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E7%BA%B3%E5%B8%95%E6%B5%B7" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.10 토</div><div class="place"><strong>독극종 고성</strong><span class="cn">独克宗古城</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Dukezong%20Ancient%20Town" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%8B%AC%E5%85%8B%E5%AE%97%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%8F%85%EA%B7%B9%EC%A2%85%20%EA%B3%A0%EC%84%B1%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%8F%85%EA%B7%B9%EC%A2%85%20%EA%B3%A0%EC%84%B1" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E7%8B%AC%E5%85%8B%E5%AE%97%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.10 토</div><div class="place"><strong>구산공원 대형 마니차</strong><span class="cn">龟山公园 转经筒</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Guishan%20Park%20Prayer%20Wheel%20Shangri-La" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E9%BE%9F%E5%B1%B1%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EA%B5%AC%EC%82%B0%EA%B3%B5%EC%9B%90%20%EB%8C%80%ED%98%95%20%EB%A7%88%EB%8B%88%EC%B0%A8%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EA%B5%AC%EC%82%B0%EA%B3%B5%EC%9B%90%20%EB%8C%80%ED%98%95%20%EB%A7%88%EB%8B%88%EC%B0%A8" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E9%BE%9F%E5%B1%B1%E5%85%AC%E5%9B%AD" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.11 일</div><div class="place"><strong>송찬림사</strong><span class="cn">松赞林寺</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Songzanlin%20Monastery" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E6%9D%BE%E8%B5%9E%E6%9E%97%E5%AF%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%86%A1%EC%B0%AC%EB%A6%BC%EC%82%AC%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%86%A1%EC%B0%AC%EB%A6%BC%EC%82%AC" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E6%9D%BE%E8%B5%9E%E6%9E%97%E5%AF%BA" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.11 일</div><div class="place"><strong>샹그릴라 → 쿤밍 이동</strong><span class="cn">迪庆香格里拉机场</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Diqing%20Shangri-La%20Airport" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E8%BF%AA%E5%BA%86%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%83%B9%EA%B7%B8%EB%A6%B4%EB%9D%BC%20%E2%86%92%20%EC%BF%A4%EB%B0%8D%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%83%B9%EA%B7%B8%EB%A6%B4%EB%9D%BC%20%E2%86%92%20%EC%BF%A4%EB%B0%8D" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E8%BF%AA%E5%BA%86%E9%A6%99%E6%A0%BC%E9%87%8C%E6%8B%89%E6%9C%BA%E5%9C%BA" target="_blank" rel="noopener">바이두</a></div></div></div><div class="group pl"><div class="pday">10.11 일</div><div class="place"><strong>석림 풍경구(대석림·소석림)</strong><span class="cn">石林风景区</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Stone%20Forest%20Kunming" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E7%9F%B3%E6%9E%97%E9%A3%8E%E6%99%AF%E5%8C%BA" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%84%9D%EB%A6%BC%20%ED%92%8D%EA%B2%BD%EA%B5%AC%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%84%9D%EB%A6%BC%20%ED%92%8D%EA%B2%BD%EA%B5%AC" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E7%9F%B3%E6%9E%97%E9%A3%8E%E6%99%AF%E5%8C%BA" target="_blank" rel="noopener">바이두</a></div></div></div>
+  </div></section><section class="static" id="s-opt"><div class="stitle">선택관광</div><div class="panel" role="tabpanel">
+    <div class="day-head"><div class="date">하나투어 상품 페이지 기준 · 1인 요금</div><h2>선택관광</h2></div>
+    <div class="optsum"><div><small>참여 예정 합계 (1인)</small><b id="optTotal">USD 0</b></div><div class="r"><small>전부 참여 시</small>USD 210</div></div>
+    <p class="note">‘참여 예정’을 체크하면 합계가 계산되고 이 기기에 저장됩니다. 일자 표시는 이 가이드의 추정 일정 기준이라, 실제 진행 날짜는 현지 가이드 안내를 따르세요.</p>
+    <div class="group opt" id="opt-yagyeong">
+      <div class="opthead"><div><div class="pday">리장 · 10.8 목 예정</div><h3>리장고성 야경투어</h3></div>
+        <div class="price">USD 30<small>약 2시간</small></div></div>
+      <div class="row"><div class="k">내용</div><div class="v">밤에 불 켜진 리장고성을 가이드가 야경 사진 명소 위주로 안내하고, 라이브 바에서 인당 맥주 2병과 테이블당 안주(견과류·과일·장미꽃빵 등)를 제공합니다. 세트 외 추가 주문은 안 됩니다.</div></div>
+      <div class="row"><div class="k">미참여 시</div><div class="v">당일 일정 종료 후 진행 · 미참여 시 호텔 휴식</div></div>
+      <div class="row"><div class="k">판단 포인트</div><div class="v">고성 야경 자체는 혼자 걸어도 볼 수 있습니다. 값어치는 사진 명소 안내와 라이브 바 분위기에 있어요. 해발 2,400m 첫날이면 맥주는 1병 정도로 조절하세요.</div></div>
+      <div class="row"><div class="k">위치·정보</div><div class="v"><div class="place"><strong>리장고성</strong><span class="cn">丽江古城</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Lijiang%20Old%20Town" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EB%A6%AC%EC%9E%A5%EA%B3%A0%EC%84%B1" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E4%B8%BD%E6%B1%9F%E5%8F%A4%E5%9F%8E" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <label class="optpick"><input type="checkbox" data-opt="yagyeong"><span>참여 예정</span></label>
+    </div><div class="group opt" id="opt-sokha">
+      <div class="opthead"><div><div class="pday">리장 · 10.8 목 예정 <span class="md">MD추천</span></div><h3>속하고진 마차체험</h3></div>
+        <div class="price">USD 30<small>1시간</small></div></div>
+      <div class="row"><div class="k">내용</div><div class="v">차마고도 마방들이 쉬어 가던 천 년 마을 속하고진을 5~7명이 함께 타는 마차로 둘러봅니다.</div></div>
+      <div class="row"><div class="k">미참여 시</div><div class="v">미참여 시 속하고진을 도보로 관광</div></div>
+      <div class="row"><div class="k">판단 포인트</div><div class="v">하나투어 MD 추천 항목입니다. 마을이 넓어서 걷기 부담스러운 동행이 있거나 비가 오는 날이면 편합니다. 체력이 괜찮으면 걸어도 충분합니다.</div></div>
+      <div class="row"><div class="k">위치·정보</div><div class="v"><div class="place"><strong>속하고진</strong><span class="cn">束河古镇</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Shuhe%20Ancient%20Town%20Lijiang" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E6%9D%9F%E6%B2%B3%E5%8F%A4%E9%95%87" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%EC%86%8D%ED%95%98%EA%B3%A0%EC%A7%84%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%EC%86%8D%ED%95%98%EA%B3%A0%EC%A7%84" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E6%9D%9F%E6%B2%B3%E5%8F%A4%E9%95%87" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <label class="optpick"><input type="checkbox" data-opt="sokha"><span>참여 예정</span></label>
+    </div><div class="group opt" id="opt-massage_lj">
+      <div class="opthead"><div><div class="pday">리장 · 10.9 금 예정</div><h3>전신마사지 (리장)</h3></div>
+        <div class="price">USD 40<small>약 1시간</small></div></div>
+      <div class="row"><div class="k">내용</div><div class="v">중국 전통 전신마사지. 마사지 비용(팁 포함)과 전용차량이 포함됩니다.</div></div>
+      <div class="row"><div class="k">미참여 시</div><div class="v">미참여 시 마사지숍에서 휴식 또는 근처 자유시간 · 가이드 미동행</div></div>
+      <div class="row"><div class="k">판단 포인트</div><div class="v">쿤밍에도 같은 마사지(USD 40)가 있습니다. 한 번만 받는다면 옥룡설산 다녀온 날 저녁(리장)이나 출국 전(쿤밍) 중에 고르세요.</div></div>
+      
+      <label class="optpick"><input type="checkbox" data-opt="massage_lj"><span>참여 예정</span></label>
+    </div><div class="group opt" id="opt-trek">
+      <div class="opthead"><div><div class="pday">리장 (호도협) · 10.10 토 예정</div><h3>호도협 미니트레킹</h3></div>
+        <div class="price">USD 50<small>약 3시간</small></div></div>
+      <div class="row"><div class="k">내용</div><div class="v">차마고도 흔적이 남은 호도협 트레킹 구간 중 경치가 가장 좋은 차마객잔~중도객잔 약 4~5km를 걷습니다. 현지 상황에 따라 중도객잔~관음폭포 구간으로 바뀔 수 있습니다. 전용차량·입장료·가이드 설명 포함.</div></div>
+      <div class="row"><div class="k">미참여 시</div><div class="v">미참여 시 호도협 전망대 주변 자유시간 · 가이드 미동행</div></div>
+      <div class="row"><div class="k">판단 포인트</div><div class="v">산세가 완만하다고 안내되지만 절벽 옆 좁은 길이 이어지는 구간입니다. 현재 예보처럼 비가 오면 길이 미끄럽고 낙석 위험이 있으니 당일 날씨를 보고 정하세요. 트레킹화 필수. 트레킹을 하면 전망대 일정이 바뀔 수 있으니 에스컬레이터와 중복되는지 가이드에게 확인하세요.</div></div>
+      <div class="row"><div class="k">위치·정보</div><div class="v"><div class="place"><strong>호도협 차마객잔</strong><span class="cn">虎跳峡 茶马客栈</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Tea%20Horse%20Guesthouse%20Tiger%20Leaping%20Gorge" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E8%99%8E%E8%B7%B3%E5%B3%A1%E8%8C%B6%E9%A9%AC%E5%AE%A2%E6%A0%88" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%ED%98%B8%EB%8F%84%ED%98%91%20%EC%B0%A8%EB%A7%88%EA%B0%9D%EC%9E%94%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%ED%98%B8%EB%8F%84%ED%98%91%20%EC%B0%A8%EB%A7%88%EA%B0%9D%EC%9E%94" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E8%99%8E%E8%B7%B3%E5%B3%A1" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <label class="optpick"><input type="checkbox" data-opt="trek"><span>참여 예정</span></label>
+    </div><div class="group opt" id="opt-esc">
+      <div class="opthead"><div><div class="pday">리장 (호도협) · 10.10 토 예정</div><h3>호도협 에스컬레이터 (왕복)</h3></div>
+        <div class="price">USD 20<small>약 10분</small></div></div>
+      <div class="row"><div class="k">내용</div><div class="v">걸어서 30분 걸리는 호도협 전망대까지 긴 에스컬레이터로 약 8~10분 만에 오르내립니다.</div></div>
+      <div class="row"><div class="k">미참여 시</div><div class="v">미참여 시 도보로 전망대 이동 (편도 20분 / 왕복 40분)</div></div>
+      <div class="row"><div class="k">판단 포인트</div><div class="v">계단 왕복이 핵심 부담입니다. 무릎이 불편하거나 연세 있는 동행이 있으면 추천하고, 체력이 좋으면 걸어도 됩니다. 호도협은 해발이 낮아 고산 부담은 적은 편입니다.</div></div>
+      <div class="row"><div class="k">위치·정보</div><div class="v"><div class="place"><strong>호도협 전망대</strong><span class="cn">虎跳峡</span>
+    <div class="lk"><span class="lkt">지도</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Tiger%20Leaping%20Gorge" target="_blank" rel="noopener">Google</a><a href="https://uri.amap.com/search?keyword=%E4%B8%8A%E8%99%8E%E8%B7%B3" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="https://search.naver.com/search.naver?query=%ED%98%B8%EB%8F%84%ED%98%91%20%EC%A0%84%EB%A7%9D%EB%8C%80%20%EC%97%AC%ED%96%89" target="_blank" rel="noopener">네이버</a><a href="https://ko.wikipedia.org/w/index.php?search=%ED%98%B8%EB%8F%84%ED%98%91%20%EC%A0%84%EB%A7%9D%EB%8C%80" target="_blank" rel="noopener">위키백과</a><a href="https://baike.baidu.com/search?word=%E8%99%8E%E8%B7%B3%E5%B3%A1" target="_blank" rel="noopener">바이두</a></div></div></div></div>
+      <label class="optpick"><input type="checkbox" data-opt="esc"><span>참여 예정</span></label>
+    </div><div class="group opt" id="opt-massage_km">
+      <div class="opthead"><div><div class="pday">쿤밍 · 10.11 일 예정</div><h3>전신마사지 (쿤밍)</h3></div>
+        <div class="price">USD 40<small>약 1시간</small></div></div>
+      <div class="row"><div class="k">내용</div><div class="v">중국 전통 전신마사지. 마사지 비용(팁 포함)과 전용차량이 포함됩니다.</div></div>
+      <div class="row"><div class="k">미참여 시</div><div class="v">미참여 시 마사지숍에서 휴식 또는 근처 자유시간 · 가이드 미동행</div></div>
+      <div class="row"><div class="k">판단 포인트</div><div class="v">출국 직전에 피로를 푸는 용도로 효용이 큽니다. 리장 마사지와 둘 중 하나만 고르는 걸 추천합니다.</div></div>
+      
+      <label class="optpick"><input type="checkbox" data-opt="massage_km"><span>참여 예정</span></label>
+    </div>
+  </div></section><section class="static" id="s-check"><div class="stitle">짐 체크</div><div class="panel check" role="tabpanel">
+    <h2>짐 체크</h2><div class="bar"><i id="barfill" style="width:0%"></i></div>
+    <div class="progress" id="prog">0 / 33 완료 · 이 브라우저에 저장됩니다</div>
+    <div class="group"><h3>서류·결제</h3><label class=""><input type="checkbox" data-id="c0-0"><span>여권<small>유효기간 6개월 이상, 서명란 서명 확인</small></span></label><label class=""><input type="checkbox" data-id="c0-1"><span>여권 사본(사진)<small>휴대폰 + 종이 1부</small></span></label><label class=""><input type="checkbox" data-id="c0-2"><span>알리페이/위챗페이<small>해외 카드 연동, 소액 결제 테스트</small></span></label><label class=""><input type="checkbox" data-id="c0-3"><span>위안화 소액 현금<small>간편결제 안 되는 노점·팁용</small></span></label><label class=""><input type="checkbox" data-id="c0-4"><span>해외 결제 가능 카드<small>비자/마스터 겸용</small></span></label><label class=""><input type="checkbox" data-id="c0-5"><span>미국 달러 소액권<small>선택관광 요금이 USD 표기 · 결제 방식은 가이드에게 확인</small></span></label></div><div class="group"><h3>통신·전자</h3><label class=""><input type="checkbox" data-id="c1-0"><span>로밍 또는 eSIM<small>한국 로밍이면 카톡·구글·네이버 사용 가능</small></span></label><label class=""><input type="checkbox" data-id="c1-1"><span>보조배터리(3C 인증)<small>중국 국내선은 3C 마크 없으면 반입 불가 · 기내 반입만</small></span></label><label class=""><input type="checkbox" data-id="c1-2"><span>멀티 어댑터<small>중국 220V · A/I/C 타입 혼용</small></span></label><label class=""><input type="checkbox" data-id="c1-3"><span>충전 케이블 여분</span></label></div><div class="group"><h3>의류(겹쳐 입기)</h3><label class=""><input type="checkbox" data-id="c2-0"><span>기능성 긴팔 2–3벌<small>땀 마르는 소재</small></span></label><label class=""><input type="checkbox" data-id="c2-1"><span>반팔 2벌<small>호도협·석림 낮</small></span></label><label class=""><input type="checkbox" data-id="c2-2"><span>후리스 1벌<small>중간층</small></span></label><label class=""><input type="checkbox" data-id="c2-3"><span>경량패딩 또는 패딩<small>옥룡설산·샹그릴라 밤 필수</small></span></label><label class=""><input type="checkbox" data-id="c2-4"><span>방풍·방수 바람막이<small>예보상 리장·쿤밍 연일 약한 비</small></span></label><label class=""><input type="checkbox" data-id="c2-5"><span>얇은 우비<small>석림·호도협·설산은 우산보다 편함</small></span></label><label class=""><input type="checkbox" data-id="c2-6"><span>방수 장갑<small>옥룡설산 정상부 눈 가능</small></span></label><label class=""><input type="checkbox" data-id="c2-7"><span>기모 바지 1벌<small>샹그릴라·설산</small></span></label><label class=""><input type="checkbox" data-id="c2-8"><span>장갑·비니·넥워머<small>설산 정상 체감 영하</small></span></label><label class=""><input type="checkbox" data-id="c2-9"><span>트레킹화<small>돌길·계단·데크</small></span></label><label class=""><input type="checkbox" data-id="c2-10"><span>두꺼운 양말</span></label></div><div class="group"><h3>고산·건강</h3><label class=""><input type="checkbox" data-id="c3-0"><span>상비약<small>두통약, 소화제, 지사제, 멀미약, 밴드</small></span></label><label class=""><input type="checkbox" data-id="c3-1"><span>개인 처방약<small>고산병 예방약은 출국 전 의사와 상담</small></span></label><label class=""><input type="checkbox" data-id="c3-2"><span>보온병<small>따뜻한 물 수시로</small></span></label><label class=""><input type="checkbox" data-id="c3-3"><span>립밤·보습크림<small>고원은 매우 건조</small></span></label><label class=""><input type="checkbox" data-id="c3-4"><span>초콜릿·사탕<small>고지대 에너지 보충</small></span></label></div><div class="group"><h3>자외선·기타</h3><label class=""><input type="checkbox" data-id="c4-0"><span>선크림 SPF50+<small>고지대 자외선은 평지의 몇 배</small></span></label><label class=""><input type="checkbox" data-id="c4-1"><span>선글라스<small>설산 눈부심 대비</small></span></label><label class=""><input type="checkbox" data-id="c4-2"><span>모자</span></label><label class=""><input type="checkbox" data-id="c4-3"><span>핫팩 5–6개<small>객잔·샹그릴라 밤</small></span></label><label class=""><input type="checkbox" data-id="c4-4"><span>휴대용 휴지·물티슈<small>현지 화장실에 휴지 없는 곳 많음</small></span></label><label class=""><input type="checkbox" data-id="c4-5"><span>접이식 우산</span></label><label class=""><input type="checkbox" data-id="c4-6"><span>접이식 보조가방<small>벗은 겉옷 보관</small></span></label></div><button class="reset" type="button" id="resetBtn">체크 모두 해제</button></div></section></main>
+
+
+
+<script>
+/* ================= 일정 데이터 (확정일정표 받으면 여기만 수정) ================= */
+const TRIP = [
+{
+  id:"d1", date:"2026-10-07", tab:"10.7 수", short:"출국", title:"인천 출발, 쿤밍 도착",
+  stay:"쿤밍 호텔", lowHigh:"쿤밍 14–22°C", fc:"쿤밍 약한 비 · 최고 22° / 최저 14°",
+  alt:[["인천",10],["쿤밍",1890]],
+  tip:"<b>오늘 핵심</b> 저녁 출발편이라 낮엔 국내에서 준비만 하면 됩니다. 기내용 가방에 겉옷 한 벌, 여권, 보조배터리를 넣어 두세요.",
+  slots:[
+    {k:"m",name:"오전",time:"출발 전",
+     weather:{t:"서울 기준",d:"출발 전 국내 일기예보 확인"},
+     places:[],
+     info:"짐 최종 점검. 아래 ‘짐 체크’ 탭의 항목을 하나씩 확인하세요. 알리페이·위챗페이에 해외카드를 미리 연결하고 소액 결제 테스트를 해 두면 현지에서 편합니다.",
+     items:["여권(유효기간 6개월 이상)","항공권·여행자보험 확인","알리페이/위챗페이 결제 테스트"],
+     wear:{상의:"평상복",하의:"편한 바지",겉옷:"가벼운 재킷",신발:"내일부터 신을 운동화/트레킹화"}},
+    {k:"n",name:"낮",time:"공항 이동",
+     weather:{t:"서울 기준",d:"—"},
+     places:[{ko:"인천국제공항 제2여객터미널",cn:"",g:"Incheon International Airport Terminal 2",a:"仁川国际机场"}],
+     info:"대한항공은 제2여객터미널(T2)에서 출발합니다. 미팅 시간·장소는 하나투어 확정 안내 문자를 따르세요(보통 출발 2시간 30분~3시간 전).",
+     items:["보조배터리는 기내 반입만 가능(위탁 불가)","액체류 100ml 이하 지퍼백"],
+     wear:{상의:"긴팔 티",하의:"편한 바지",겉옷:"기내용 얇은 후리스(기내가 쌀쌀함)",신발:"운동화"}},
+    {k:"e",name:"저녁",time:"출발 18시대 → 도착 22시대(현지)",
+     weather:{t:"14–16°C",d:"쿤밍 밤, 약한 비 예보 · 우산 꺼내기 쉽게"},
+     places:[{ko:"쿤밍 창수이 국제공항",cn:"昆明长水国际机场",g:"Kunming Changshui International Airport",a:"昆明长水国际机场"}],
+     info:"비행 약 4시간 30분. 중국은 한국보다 1시간 늦습니다(시계 −1시간). 도착 후 입국심사 → 가이드 미팅 → 호텔 이동. 쿤밍은 해발 약 1,890m라 몸이 살짝 무거울 수 있으니 첫날은 바로 쉬세요.",
+     items:["입국 시 지문 등록 대기 있음","호텔 체크인 후 물 충분히"],
+     wear:{상의:"긴팔 티",하의:"긴바지",겉옷:"바람막이 또는 얇은 후리스",신발:"운동화"}}
+  ]
+},
+{
+  id:"d2", date:"2026-10-08", tab:"10.8 목", short:"리장고성", title:"쿤밍 → 리장, 고성 객잔에서 하룻밤",
+  stay:"리장고성 객잔(나시족 전통가옥)", lowHigh:"리장 9–22°C", fc:"리장 약한 비 · 최고 22° / 최저 9° (쿤밍 약한 비 21°/16°)",
+  alt:[["쿤밍",1890],["리장",2400],["흑룡담",2420],["리장고성",2400]],
+  tip:"<b>오늘 핵심</b> 해발 2,400m 첫날입니다. 고성 돌길은 오르내림이 많으니 천천히 걷고, 음주는 가볍게. 객잔은 난방이 약할 수 있어 밤에 입을 보온 옷을 꺼내 두세요.",
+  slots:[
+    {k:"m",name:"오전",time:"07:00–11:30",
+     weather:{t:"쿤밍 15–17°C",d:"흐리고 약한 비 가능"},
+     places:[{ko:"쿤밍 → 리장 이동",cn:"丽江",g:"Lijiang Yunnan",a:"丽江"}],
+     info:"국내선(약 1시간) 또는 고속철(약 3~3.5시간)로 리장 이동. 이동 수단은 확정일정표 확인. 기차·항공 모두 여권 실명 확인이 있습니다.",
+     items:["여권(신분 확인 필수)","3C 인증 보조배터리(중국 국내선 규정)","간식·물"],
+     wear:{상의:"긴팔 티",하의:"긴바지",겉옷:"얇은 후리스 + 바람막이",신발:"쿠션 좋은 운동화"}},
+    {k:"n",name:"낮",time:"12:00–17:30",
+     weather:{t:"리장 19–22°C",d:"약한 비 예보 · 구름 사이 햇살은 매우 강함(고지대)"},
+     places:[
+       {ko:"흑룡담 공원",cn:"黑龙潭公园",g:"Black Dragon Pool Park Lijiang",a:"丽江黑龙潭公园"},
+       {ko:"리장고성 사방가",cn:"丽江古城 四方街",g:"Sifang Street Lijiang Old Town",a:"丽江古城四方街"}],
+     opt:["sokha"], info:"흑룡담은 고성의 수원지로, 맑은 날 호수에 옥룡설산이 비치는 대표 포토스팟입니다. 리장고성은 송대부터 이어진 나시족 마을로 세계문화유산. 수로를 따라 사방가를 중심으로 골목이 퍼져 있습니다. 고성 입장 시 ‘고성유지비’가 포함인지 가이드에게 확인하세요.",
+     items:["선글라스·모자","선크림 SPF50+(2시간마다)","소액 현금·간편결제"],
+     wear:{상의:"반팔 또는 얇은 긴팔",하의:"긴바지",겉옷:"바람막이는 가방에",신발:"미끄럼 덜한 운동화(돌길 반들거림)"}},
+    {k:"e",name:"저녁",time:"18:00 이후",
+     weather:{t:"9–12°C",d:"해 지면 급격히 쌀쌀 · 돌길 젖으면 미끄러움"},
+     places:[
+       {ko:"리장고성 야경",cn:"丽江古城",g:"Lijiang Old Town",a:"丽江古城"},
+       {ko:"고성 객잔 숙박",cn:"客栈",g:"Lijiang Old Town inn",a:"丽江古城客栈"}],
+     opt:["yagyeong"], info:"홍등이 켜진 고성 골목과 수로 야경이 하이라이트. 객잔은 나시족 전통 목조 가옥을 개조한 숙소로, 마당(정원)을 둘러싼 구조입니다. 목조라 방음·난방이 약할 수 있어요.",
+     items:["경량패딩(밤 산책)","핫팩 1~2개","실내용 슬리퍼","귀마개(목조 숙소 소음)"],
+     wear:{상의:"긴팔 + 얇은 니트",하의:"긴바지",겉옷:"경량패딩",신발:"운동화"}}
+  ]
+},
+{
+  id:"d3", date:"2026-10-09", tab:"10.9 금", short:"옥룡설산", title:"옥룡설산 빙천케이블카와 람월곡",
+  stay:"리장 5성급 호텔", lowHigh:"설산 −3–5° · 리장 10–22°", fc:"리장 약한 비 · 최고 22° / 최저 10° → 설산 정상부는 눈·진눈깨비 가능",
+  alt:[["리장",2400],["케이블카 하부",3356],["빙천공원",4506],["전망대",4680],["람월곡",3000],["리장",2400]],
+  tip:"<b>오늘 핵심</b> 이번 여행 최고 고도(약 4,500~4,680m). 위에서는 뛰거나 서두르지 말고, 두통·어지럼이 오면 계단을 더 오르지 말고 내려오세요. 산소통은 현장 매점에서 팝니다. 케이블카 매표에 여권이 필요합니다.",
+  slots:[
+    {k:"m",name:"오전",time:"07:30–12:00",
+     weather:{t:"−3–5°C (정상부)",d:"리장 비 예보 → 정상부는 눈·진눈깨비 가능 · 바람 강함 · 체감 영하"},
+     places:[
+       {ko:"옥룡설산 빙천공원 케이블카",cn:"玉龙雪山冰川公园",g:"Jade Dragon Snow Mountain Glacier Park",a:"玉龙雪山冰川公园"}],
+     info:"셔틀버스로 해발 약 3,356m 탑승장까지 간 뒤, 케이블카로 약 15분 만에 해발 4,506m 빙천공원에 도착합니다. 나무 데크 계단을 오르면 4,680m 전망대. 만년설과 빙하를 가장 가까이 볼 수 있는 구간이라 오전 맑을 때가 가장 좋습니다.",
+     items:["방수 장갑(눈·진눈깨비 대비)","여권(매표 필수)","휴대용 산소통(현장 구매 가능)","장갑·비니·넥워머","선글라스(설맹 예방)","보온병 따뜻한 물","초콜릿·사탕"],
+     wear:{상의:"기능성 긴팔 + 후리스",하의:"기모 바지 또는 레깅스+바지",겉옷:"패딩(현장 대여 패딩도 있음) + 방풍",신발:"트레킹화(데크 결빙 가능)"}},
+    {k:"n",name:"낮",time:"12:00–17:00",
+     weather:{t:"15–19°C",d:"약한 비 예보 · 오후 소나기 대비"},
+     places:[
+       {ko:"람월곡(블루문 밸리)",cn:"蓝月谷",g:"Blue Moon Valley Lijiang",a:"玉龙雪山蓝月谷"},
+       {ko:"인상여강 쇼(선택관광 시)",cn:"印象丽江",g:"Impression Lijiang Show",a:"印象丽江"}],
+     info:"람월곡은 빙하 녹은 물이 석회암 계단식 호수를 이루며 에메랄드·옥빛을 띠는 계곡입니다. 전동차로 이동하며 포인트마다 내려 사진. 인상여강은 설산을 배경으로 소수민족 수백 명이 출연하는 야외 공연으로, 선택관광 여부를 확인하세요.",
+     items:["정상에서 입은 패딩은 벗어 가방에","선크림 덧바르기","우산 또는 방수 바람막이"],
+     wear:{상의:"긴팔 티",하의:"긴바지",겉옷:"후리스는 허리에, 바람막이 휴대",신발:"트레킹화"}},
+    {k:"e",name:"저녁",time:"18:00 이후",
+     weather:{t:"10–12°C",d:"리장 시내, 선선"},
+     places:[{ko:"리장 시내 5성급 호텔",cn:"丽江",g:"Lijiang city",a:"丽江市"}],
+     opt:["massage_lj"], info:"고산 일정 후라 피로가 큽니다. 일찍 쉬고 물을 충분히 마시세요. 내일은 고도가 1,800m까지 내려갔다가 3,300m까지 다시 올라가는 날입니다.",
+     items:["따뜻한 샤워는 짧게","수분 보충","내일 가방에 경량패딩 미리 넣기"],
+     wear:{상의:"긴팔",하의:"긴바지",겉옷:"얇은 후리스",신발:"편한 신발"}}
+  ]
+},
+{
+  id:"d4", date:"2026-10-10", tab:"10.10 토", short:"호도협·샹그릴라", title:"호도협을 지나 샹그릴라로",
+  stay:"샹그릴라 호텔", lowHigh:"호도협 20–25° · 샹그릴라 3–17°", fc:"샹그릴라 낮 구름, 밤 약한 비 · 최고 17° / 최저 3° (리장 23°/9°)",
+  alt:[["리장",2400],["장강제일만",1850],["호도협",1800],["나파해",3270],["샹그릴라",3300]],
+  tip:"<b>오늘 핵심</b> 하루에 여름(호도협 25°C 안팎)과 초겨울(샹그릴라 밤 0~5°C)을 모두 겪습니다. 얇게 여러 겹 입고 벗는 게 정답. 샹그릴라 첫날 밤은 무리한 음주·장시간 샤워를 피하세요.",
+  slots:[
+    {k:"m",name:"오전",time:"08:00–12:00",
+     weather:{t:"18–24°C",d:"계곡 안쪽은 덥고 햇볕 강함"},
+     places:[
+       {ko:"장강제일만",cn:"长江第一湾",g:"First Bend of the Yangtze River",a:"长江第一湾"},
+       {ko:"호도협(상호도협)",cn:"虎跳峡 上虎跳",g:"Upper Tiger Leaping Gorge",a:"上虎跳"}],
+     opt:["trek","esc"], info:"호도협은 옥룡설산과 하바설산 사이를 금사강(장강 상류)이 깎아 만든 세계 최대급 협곡입니다. ‘호랑이가 바위를 딛고 건너뛰었다’는 전설의 바위까지 계단으로 내려가는데, 왕복 수백 계단이라 돌아오는 오르막이 힘듭니다. 물보라에 바닥이 젖어 있어요.",
+     items:["물 500ml 이상","손수건/쿨토시","계단용 무릎 보호대(필요 시)","방수 휴대폰 파우치"],
+     wear:{상의:"반팔 + 얇은 긴팔 겹쳐",하의:"신축성 있는 긴바지",겉옷:"가방에",신발:"접지력 좋은 트레킹화"}},
+    {k:"n",name:"낮",time:"12:00–17:00",
+     weather:{t:"12–17°C",d:"샹그릴라 낮 구름 많음 · 고원으로 오르며 기온 하락 · 바람"},
+     places:[
+       {ko:"샹그릴라로 이동(약 2–3시간)",cn:"香格里拉",g:"Shangri-La Yunnan",a:"香格里拉市"},
+       {ko:"나파해 초원",cn:"纳帕海",g:"Napa Lake Shangri-La",a:"纳帕海"}],
+     info:"차창 밖으로 티베트식 가옥과 초원이 펼쳐집니다. 나파해는 계절 호수를 품은 고원 초원으로, 10월에는 풀이 황금빛으로 물들기 시작합니다. 일정에 없으면 이동 중 차창 감상.",
+     items:["멀미약(산길)","입술 보습제(매우 건조)","선글라스"],
+     wear:{상의:"긴팔 + 후리스",하의:"긴바지",겉옷:"바람막이",신발:"트레킹화"}},
+    {k:"e",name:"저녁",time:"18:00 이후",
+     weather:{t:"3–6°C",d:"밤에 약한 비 예보 · 체감은 더 추움"},
+     places:[
+       {ko:"독극종 고성",cn:"独克宗古城",g:"Dukezong Ancient Town",a:"独克宗古城"},
+       {ko:"구산공원 대형 마니차",cn:"龟山公园 转经筒",g:"Guishan Park Prayer Wheel Shangri-La",a:"龟山公园"}],
+     info:"독극종은 차마고도의 1,300년 된 티베트 마을입니다. 언덕 위 구산공원에는 세계 최대급 황금 마니차(전경통)가 있어 여럿이 함께 시계방향으로 돌립니다. 언덕 계단이 짧지만 3,300m라 숨이 차니 천천히.",
+     items:["패딩 필수","장갑·비니","핫팩","보온병"],
+     wear:{상의:"기능성 긴팔 + 후리스",하의:"기모 바지",겉옷:"두툼한 경량패딩 이상",신발:"트레킹화 + 두꺼운 양말"}}
+  ]
+},
+{
+  id:"d5", date:"2026-10-11", tab:"10.11 일", short:"송찬림사·석림", title:"송찬림사, 쿤밍 석림, 그리고 출국",
+  stay:"기내(심야편)", lowHigh:"샹그릴라 2–17° · 쿤밍 15–24°", fc:"샹그릴라 흐림→밤 맑음 17°/2° · 쿤밍·석림 약한 비 24°/15°",
+  alt:[["샹그릴라",3300],["송찬림사",3380],["쿤밍",1890],["석림",1750],["쿤밍 공항",2100]],
+  tip:"<b>오늘 핵심</b> 아침 영상 2~7°C → 오후 24°C로 기온 폭이 이번 여행 최대입니다. 짐은 오늘 아침 최종 정리(심야 출국). 석림에서 겉옷을 벗어 넣을 여유 공간을 남겨 두세요.",
+  slots:[
+    {k:"m",name:"오전",time:"07:30–11:30",
+     weather:{t:"2–8°C",d:"흐림 · 이번 여행 가장 추운 아침(최저 2°)"},
+     places:[{ko:"송찬림사",cn:"松赞林寺",g:"Songzanlin Monastery",a:"松赞林寺"}],
+     info:"‘작은 포탈라궁’으로 불리는 운남 최대의 티베트 불교 사원(17세기 창건). 본당까지 경사 계단(약 140여 칸)을 오릅니다. 법당 내부는 촬영 금지 구역이 많고, 탑·마니차는 시계방향으로 돕니다. 승려 정면 촬영은 양해를 구하세요.",
+     items:["여권","모자 벗을 준비(법당 내부)","선글라스·선크림"],
+     wear:{상의:"긴팔 + 후리스",하의:"긴바지(노출 자제)",겉옷:"경량패딩(오전), 해 뜨면 벗기",신발:"트레킹화"}},
+    {k:"n",name:"낮",time:"12:00–18:00",
+     weather:{t:"21–24°C",d:"쿤밍·석림 약한 비 예보 · 석림은 바위길이라 우비가 우산보다 편함"},
+     places:[
+       {ko:"샹그릴라 → 쿤밍 이동",cn:"迪庆香格里拉机场",g:"Diqing Shangri-La Airport",a:"迪庆香格里拉机场"},
+       {ko:"석림 풍경구(대석림·소석림)",cn:"石林风景区",g:"Stone Forest Kunming",a:"石林风景区"}],
+     info:"쿤밍으로 이동 후(국내선 약 1시간 또는 열차) 석림으로. 석림은 약 2억 7천만 년 전 바닷속 석회암이 융기·침식되어 만들어진 카르스트 지형으로 세계자연유산입니다. 전동카로 이동하며 좁은 바위 미로를 걷습니다.",
+     items:["얇은 우비","물·선크림","모자","패딩 넣을 접이식 가방","3C 인증 보조배터리"],
+     wear:{상의:"반팔(긴팔 위에 겹쳐 입었다면 벗기)",하의:"가벼운 긴바지",겉옷:"가방에",신발:"운동화"}},
+    {k:"e",name:"저녁",time:"18:00 이후 · 출발 23시대",
+     weather:{t:"15–17°C",d:"쿤밍 밤, 약한 비"},
+     places:[{ko:"쿤밍 창수이 국제공항",cn:"昆明长水国际机场",g:"Kunming Changshui International Airport",a:"昆明长水国际机场"}],
+     opt:["massage_km"], info:"석식 후 공항 이동, 심야편으로 인천 출발(대한항공 기준 23시대). 남은 위안화는 공항에서 쓰거나 다음 여행용으로 보관. 면세 한도(입국 시 1인 US$800)를 확인하세요.",
+     items:["기내용 목베개·안대","얇은 담요 대용 후리스","보조배터리 기내 반입"],
+     wear:{상의:"긴팔",하의:"편한 바지",겉옷:"후리스(기내용)",신발:"운동화"}}
+  ]
+},
+{
+  id:"d6", date:"2026-10-12", tab:"10.12 월", short:"귀국", title:"인천 새벽 도착",
+  stay:"집", lowHigh:"서울 새벽 10° 안팎", fc:"",
+  alt:[["쿤밍",1890],["인천",10]],
+  tip:"<b>오늘 핵심</b> 새벽 도착 후 바로 출근이라면 회사용 옷 한 벌을 캐리어 맨 위에 두세요. 고지대에서 내려오면 오히려 피곤이 몰려오니 수분과 수면을 우선하세요.",
+  slots:[
+    {k:"m",name:"새벽",time:"04시대–06시대 도착(예정)",
+     weather:{t:"서울 9–13°C",d:"10월 중순 새벽, 쌀쌀"},
+     places:[{ko:"인천국제공항 제2여객터미널",cn:"",g:"Incheon International Airport Terminal 2",a:"仁川国际机场"}],
+     info:"입국심사·세관. 축산물(육포·소시지)·생과일 반입 금지. 면세 한도 초과 시 자진신고하면 감면됩니다.",
+     items:["세관 신고 여부 확인","공항철도·리무진 첫차 시간 확인"],
+     wear:{상의:"긴팔",하의:"긴바지",겉옷:"후리스 또는 재킷",신발:"운동화"}},
+    {k:"n",name:"낮",time:"",
+     weather:{t:"서울 19–22°C",d:"국내 예보 확인"},
+     places:[],
+     info:"사진 백업, 여행자보험 청구할 일이 있으면 영수증·진단서 정리(여행 종료 후 청구 가능).",
+     items:["사진 백업","영수증 정리"],
+     wear:{상의:"평상복",하의:"—",겉옷:"가벼운 재킷",신발:"—"}},
+    {k:"e",name:"저녁",time:"",
+     weather:{t:"—",d:"—"},
+     places:[],
+     info:"푹 쉬기.",
+     items:[],
+     wear:{상의:"—",하의:"—",겉옷:"—",신발:"—"}}
+  ]
+}
+];
+
+const MOJI={
+  lijiang:"https://tianqi.moji.com/forecast15/china/yunnan/lijiang",
+  shangrila:"https://tianqi.moji.com/forecast15/china/yunnan/shangri-la",
+  kunming:"https://tianqi.moji.com/forecast15/china/yunnan/kunming",
+  shilin:"https://tianqi.moji.com/forecast15/china/yunnan/shilin-scenic-spot",
+  hutiao:"https://tianqi.moji.com/forecast15/china/yunnan/shangri-la-shanghutiao-scenic-area",
+  songzan:"https://tianqi.moji.com/forecast15/china/yunnan/gedan-songzanlin-lamasery",
+  lanyue:"https://tianqi.moji.com/forecast15/china/yunnan/lanyue-valley-scenic-area"
+};
+const FORECAST = {
+  d1:[["쿤밍",MOJI.kunming]],
+  d2:[["리장",MOJI.lijiang],["쿤밍",MOJI.kunming]],
+  d3:[["리장",MOJI.lijiang],["람월곡·설산 일대",MOJI.lanyue]],
+  d4:[["호도협",MOJI.hutiao],["샹그릴라",MOJI.shangrila]],
+  d5:[["송찬림사",MOJI.songzan],["석림",MOJI.shilin],["쿤밍",MOJI.kunming]],
+  d6:[["인천","https://www.google.com/search?q="+encodeURIComponent("인천 날씨")]]
+};
+
+
+/* ================= 선택관광 (하나투어 상품 페이지 기준) ================= */
+const OPT=[
+ {id:"yagyeong",city:"리장",name:"리장고성 야경투어",usd:30,time:"약 2시간",
+  what:"밤에 불 켜진 리장고성을 가이드가 야경 사진 명소 위주로 안내하고, 라이브 바에서 인당 맥주 2병과 테이블당 안주(견과류·과일·장미꽃빵 등)를 제공합니다. 세트 외 추가 주문은 안 됩니다.",
+  alt:"당일 일정 종료 후 진행 · 미참여 시 호텔 휴식",
+  tip:"고성 야경 자체는 혼자 걸어도 볼 수 있습니다. 값어치는 사진 명소 안내와 라이브 바 분위기에 있어요. 해발 2,400m 첫날이면 맥주는 1병 정도로 조절하세요.",
+  place:{ko:"리장고성",cn:"丽江古城",g:"Lijiang Old Town",a:"丽江古城"}},
+ {id:"sokha",city:"리장",name:"속하고진 마차체험",usd:30,time:"1시간",md:true,
+  what:"차마고도 마방들이 쉬어 가던 천 년 마을 속하고진을 5~7명이 함께 타는 마차로 둘러봅니다.",
+  alt:"미참여 시 속하고진을 도보로 관광",
+  tip:"하나투어 MD 추천 항목입니다. 마을이 넓어서 걷기 부담스러운 동행이 있거나 비가 오는 날이면 편합니다. 체력이 괜찮으면 걸어도 충분합니다.",
+  place:{ko:"속하고진",cn:"束河古镇",g:"Shuhe Ancient Town Lijiang",a:"束河古镇"}},
+ {id:"massage_lj",city:"리장",name:"전신마사지 (리장)",usd:40,time:"약 1시간",
+  what:"중국 전통 전신마사지. 마사지 비용(팁 포함)과 전용차량이 포함됩니다.",
+  alt:"미참여 시 마사지숍에서 휴식 또는 근처 자유시간 · 가이드 미동행",
+  tip:"쿤밍에도 같은 마사지(USD 40)가 있습니다. 한 번만 받는다면 옥룡설산 다녀온 날 저녁(리장)이나 출국 전(쿤밍) 중에 고르세요.",
+  place:null},
+ {id:"trek",city:"리장 (호도협)",name:"호도협 미니트레킹",usd:50,time:"약 3시간",
+  what:"차마고도 흔적이 남은 호도협 트레킹 구간 중 경치가 가장 좋은 차마객잔~중도객잔 약 4~5km를 걷습니다. 현지 상황에 따라 중도객잔~관음폭포 구간으로 바뀔 수 있습니다. 전용차량·입장료·가이드 설명 포함.",
+  alt:"미참여 시 호도협 전망대 주변 자유시간 · 가이드 미동행",
+  tip:"산세가 완만하다고 안내되지만 절벽 옆 좁은 길이 이어지는 구간입니다. 현재 예보처럼 비가 오면 길이 미끄럽고 낙석 위험이 있으니 당일 날씨를 보고 정하세요. 트레킹화 필수. 트레킹을 하면 전망대 일정이 바뀔 수 있으니 에스컬레이터와 중복되는지 가이드에게 확인하세요.",
+  place:{ko:"호도협 차마객잔",cn:"虎跳峡 茶马客栈",g:"Tea Horse Guesthouse Tiger Leaping Gorge",a:"虎跳峡茶马客栈"}},
+ {id:"esc",city:"리장 (호도협)",name:"호도협 에스컬레이터 (왕복)",usd:20,time:"약 10분",
+  what:"걸어서 30분 걸리는 호도협 전망대까지 긴 에스컬레이터로 약 8~10분 만에 오르내립니다.",
+  alt:"미참여 시 도보로 전망대 이동 (편도 20분 / 왕복 40분)",
+  tip:"계단 왕복이 핵심 부담입니다. 무릎이 불편하거나 연세 있는 동행이 있으면 추천하고, 체력이 좋으면 걸어도 됩니다. 호도협은 해발이 낮아 고산 부담은 적은 편입니다.",
+  place:{ko:"호도협 전망대",cn:"虎跳峡",g:"Tiger Leaping Gorge",a:"上虎跳"}},
+ {id:"massage_km",city:"쿤밍",name:"전신마사지 (쿤밍)",usd:40,time:"약 1시간",
+  what:"중국 전통 전신마사지. 마사지 비용(팁 포함)과 전용차량이 포함됩니다.",
+  alt:"미참여 시 마사지숍에서 휴식 또는 근처 자유시간 · 가이드 미동행",
+  tip:"출국 직전에 피로를 푸는 용도로 효용이 큽니다. 리장 마사지와 둘 중 하나만 고르는 걸 추천합니다.",
+  place:null}
+];
+const OPTKEY="yunnan1007-opt";
+
+/* 경로 지도용 좌표 (위도, 경도) */
+const PTS={
+  KMG:{n:"쿤밍",lat:25.04,lon:102.71,dx:-8,dy:-8,a:"end"},
+  KMGAP:{n:"쿤밍공항",lat:25.10,lon:102.93,dx:8,dy:4},
+  LJ:{n:"리장고성",lat:26.87,lon:100.23,dx:10,dy:14,z:{dx:10,dy:16}},
+  HLT:{n:"흑룡담",lat:26.89,lon:100.24,dx:10,dy:2,z:{dx:10,dy:-4}},
+  GLC:{n:"옥룡설산 빙천",lat:27.10,lon:100.19,dx:10,dy:-2,z:{dx:-9,dy:4,a:"end"}},
+  BMV:{n:"람월곡",lat:27.13,lon:100.25,dx:10,dy:-12,z:{dx:9,dy:-4}},
+  FB:{n:"장강제일만",lat:26.88,lon:99.95,dx:-8,dy:14,a:"end",z:{dx:0,dy:18,a:"middle"}},
+  TLG:{n:"호도협",lat:27.19,lon:100.08,dx:-8,dy:-6,a:"end",z:{dx:-9,dy:-4,a:"end"}},
+  NAPA:{n:"나파해",lat:27.88,lon:99.63,dx:-8,dy:-4,a:"end",z:{dx:-9,dy:4,a:"end"}},
+  SGL:{n:"샹그릴라",lat:27.82,lon:99.70,dx:8,dy:12,z:{dx:9,dy:12}},
+  SZL:{n:"송찬림사",lat:27.86,lon:99.71,dx:8,dy:-6,z:{dx:9,dy:-4}},
+  SL:{n:"석림",lat:24.82,lon:103.33,dx:-8,dy:16,a:"end"}
+};
+const ROUTE={
+  d1:[["KMGAP"],[]],
+  d2:[["KMG","LJ"],["HLT","LJ"]],
+  d3:[["LJ","GLC","BMV","LJ"]],
+  d4:[["LJ","FB","TLG","NAPA","SGL"]],
+  d5:[["SZL","KMG"],["KMG","SL","KMGAP"]],
+  d6:[["KMGAP"]]
+};
+/* 비행·열차 구간(점선) */
+const DASH={"KMG-LJ":1,"SZL-KMG":1};
+const DAYCOL={d1:"var(--sub)",d2:"var(--ochre)",d3:"var(--glacier)",d4:"var(--juniper)",d5:"var(--maroon)",d6:"var(--sub)"};
+
+const CHECK = [
+  {g:"서류·결제",items:[
+    ["여권","유효기간 6개월 이상, 서명란 서명 확인"],
+    ["여권 사본(사진)","휴대폰 + 종이 1부"],
+    ["알리페이/위챗페이","해외 카드 연동, 소액 결제 테스트"],
+    ["위안화 소액 현금","간편결제 안 되는 노점·팁용"],
+    ["해외 결제 가능 카드","비자/마스터 겸용"],
+    ["미국 달러 소액권","선택관광 요금이 USD 표기 · 결제 방식은 가이드에게 확인"]]},
+  {g:"통신·전자",items:[
+    ["로밍 또는 eSIM","한국 로밍이면 카톡·구글·네이버 사용 가능"],
+    ["보조배터리(3C 인증)","중국 국내선은 3C 마크 없으면 반입 불가 · 기내 반입만"],
+    ["멀티 어댑터","중국 220V · A/I/C 타입 혼용"],
+    ["충전 케이블 여분",""]]},
+  {g:"의류(겹쳐 입기)",items:[
+    ["기능성 긴팔 2–3벌","땀 마르는 소재"],
+    ["반팔 2벌","호도협·석림 낮"],
+    ["후리스 1벌","중간층"],
+    ["경량패딩 또는 패딩","옥룡설산·샹그릴라 밤 필수"],
+    ["방풍·방수 바람막이","예보상 리장·쿤밍 연일 약한 비"],
+    ["얇은 우비","석림·호도협·설산은 우산보다 편함"],
+    ["방수 장갑","옥룡설산 정상부 눈 가능"],
+    ["기모 바지 1벌","샹그릴라·설산"],
+    ["장갑·비니·넥워머","설산 정상 체감 영하"],
+    ["트레킹화","돌길·계단·데크"],
+    ["두꺼운 양말",""]]},
+  {g:"고산·건강",items:[
+    ["상비약","두통약, 소화제, 지사제, 멀미약, 밴드"],
+    ["개인 처방약","고산병 예방약은 출국 전 의사와 상담"],
+    ["보온병","따뜻한 물 수시로"],
+    ["립밤·보습크림","고원은 매우 건조"],
+    ["초콜릿·사탕","고지대 에너지 보충"]]},
+  {g:"자외선·기타",items:[
+    ["선크림 SPF50+","고지대 자외선은 평지의 몇 배"],
+    ["선글라스","설산 눈부심 대비"],
+    ["모자",""],
+    ["핫팩 5–6개","객잔·샹그릴라 밤"],
+    ["휴대용 휴지·물티슈","현지 화장실에 휴지 없는 곳 많음"],
+    ["접이식 우산",""],
+    ["접이식 보조가방","벗은 겉옷 보관"]]}
+];
+
+/* ================= 렌더링 ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const gmap = q => "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const amap = q => "https://uri.amap.com/search?keyword="+encodeURIComponent(q);
+const naver = q => "https://search.naver.com/search.naver?query="+encodeURIComponent(q);
+const wiki = q => "https://ko.wikipedia.org/w/index.php?search="+encodeURIComponent(q);
+const baike = q => "https://baike.baidu.com/search?word="+encodeURIComponent(q);
+const IDS=[...TRIP.map(d=>d.id),"route","opt","check"];
+
+/* ---------- 고도 그래프 ---------- */
+function altSVG(pts){
+  const W=360,H=150,pl=30,pr=14,pt=22,pb=30,maxA=5000;
+  const n=pts.length, xs=i=> n===1?W/2: pl+(W-pl-pr)*i/(n-1);
+  const ys=a=> pt+(H-pt-pb)*(1-a/maxA);
+  let grid="";
+  [1000,2000,3000,4000,5000].forEach(v=>{grid+=`<line class="grid" x1="${pl}" x2="${W-pr}" y1="${ys(v)}" y2="${ys(v)}"/><text class="gridtxt" x="2" y="${ys(v)+3}">${v/1000}k</text>`;});
+  const danger=`<rect class="danger" x="${pl}" y="${ys(5000)}" width="${W-pl-pr}" height="${ys(3000)-ys(5000)}"/>`;
+  let d=`M${xs(0)},${ys(pts[0][1])}`;
+  for(let i=1;i<n;i++){const x0=xs(i-1),x1=xs(i),cx=(x0+x1)/2;d+=` C${cx},${ys(pts[i-1][1])} ${cx},${ys(pts[i][1])} ${x1},${ys(pts[i][1])}`;}
+  const area=d+` L${xs(n-1)},${H-pb} L${xs(0)},${H-pb} Z`;
+  let dots="";
+  pts.forEach((p,i)=>{
+    const x=xs(i),y=ys(p[1]),anchor=n===1?"middle":i===0?"start":i===n-1?"end":"middle";
+    const lab = n>4 && i%2===1 ? H-pb+24 : H-pb+13;
+    dots+=`<circle cx="${x}" cy="${y}" r="3.5" fill="var(--paper)" stroke="var(--glacier)" stroke-width="2"/>
+      <text class="elev" x="${x}" y="${y-8}" text-anchor="${anchor}">${p[1].toLocaleString()}</text>
+      <text class="lbl" x="${x}" y="${lab}" text-anchor="${anchor}">${esc(p[0])}</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H+(n>4?8:0)}" role="img" aria-label="고도 변화(미터)">
+    <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--glacier)" stop-opacity=".45"/><stop offset="1" stop-color="var(--glacier)" stop-opacity=".05"/></linearGradient></defs>
+    ${danger}${grid}<path d="${area}" fill="url(#g)"/><path d="${d}" fill="none" stroke="var(--glacier)" stroke-width="2.2"/>${dots}</svg>`;
+}
+
+/* ---------- 경로 지도 (위경도 투영 SVG) ---------- */
+function routeLayer(focus,B,Rc,opt){
+  /* B: 경위도 범위, Rc: 그릴 사각형 {x,y,w,h} */
+  const px=lon=>Rc.x+Rc.w*(lon-B.lon0)/(B.lon1-B.lon0);
+  const py=lat=>Rc.y+Rc.h*(B.lat1-lat)/(B.lat1-B.lat0);
+  const days = focus==="all" ? Object.keys(ROUTE) : [focus];
+  const inside=p=>p.lon>=B.lon0&&p.lon<=B.lon1&&p.lat>=B.lat0&&p.lat<=B.lat1;
+  let out="", used=new Set();
+  if(opt.grid){
+    for(let lon=Math.ceil(B.lon0);lon<=B.lon1;lon++) out+=`<line class="mgrid" x1="${px(lon)}" x2="${px(lon)}" y1="${Rc.y}" y2="${Rc.y+Rc.h}"/><text class="mgt" x="${px(lon)+3}" y="${Rc.y+Rc.h-4}">${lon}°E</text>`;
+    for(let lat=Math.ceil(B.lat0);lat<=B.lat1;lat++) out+=`<line class="mgrid" x1="${Rc.x}" x2="${Rc.x+Rc.w}" y1="${py(lat)}" y2="${py(lat)}"/><text class="mgt" x="${Rc.x+3}" y="${py(lat)-3}">${lat}°N</text>`;
+  }
+  /* 옥룡설산 기호 */
+  const sx=px(PTS.GLC.lon)-2,sy=py(PTS.GLC.lat)+(opt.zoom?14:6),k=opt.zoom?1.6:0.8;
+  out+=`<path d="M${sx-12*k},${sy} l${7*k},${-12*k} l${5*k},${7*k} l${5*k},${-10*k} l${7*k},${15*k} z" fill="var(--glacier-soft)" stroke="var(--glacier)" stroke-width=".8"/>`;
+  Object.keys(ROUTE).forEach(did=>{
+    const on=days.includes(did);
+    ROUTE[did].forEach(seg=>{
+      for(let i=1;i<seg.length;i++){
+        const A=PTS[seg[i-1]],C=PTS[seg[i]],key=seg[i-1]+"-"+seg[i];
+        const x1=px(A.lon),y1=py(A.lat),x2=px(C.lon),y2=py(C.lat);
+        const dx=x2-x1,dy=y2-y1,L=Math.hypot(dx,dy)||1,bend=DASH[key]?(key==="SZL-KMG"?-0.12:0.12)*L:0;
+        const cx=(x1+x2)/2+bend*(-dy/L), cy=(y1+y2)/2+bend*(dx/L);
+        out+=`<path d="M${x1},${y1} Q${cx},${cy} ${x2},${y2}" fill="none" stroke="${on?DAYCOL[did]:"var(--line)"}" stroke-width="${on?(opt.zoom?3.5:3):1.5}" ${DASH[key]?'stroke-dasharray="6 5"':''} stroke-linecap="round"/>`;
+      }
+      if(on) seg.forEach(x=>used.add(x));
+    });
+  });
+  Object.entries(PTS).forEach(([key,p])=>{
+    if(!inside(p)) return;
+    const on=focus==="all"||used.has(key);
+    const show = opt.labels==="all" ? on : (opt.labels||[]).includes(key) && on;
+    out+=`<circle cx="${px(p.lon)}" cy="${py(p.lat)}" r="${on?(opt.zoom?5:4.5):3}" fill="${on?"var(--paper)":"var(--line)"}" stroke="${on?"var(--ink)":"var(--line)"}" stroke-width="1.6"/>`;
+    if(show){const L=(opt.zoom&&p.z)?p.z:p; out+=`<text class="mlbl" x="${px(p.lon)+(L.dx!=null?L.dx:8)}" y="${py(p.lat)+(L.dy!=null?L.dy:4)}" text-anchor="${L.a||"start"}">${esc(p.n)}</text>`;}
+  });
+  return {svg:out,px,py};
+}
+const B_ALL={lon0:98.95,lon1:103.7,lat0:24.55,lat1:28.15};
+const B_NW={lon0:99.1,lon1:100.85,lat0:26.72,lat1:28.02};
+function routeSVG(focus){
+  const W=360;
+  const pts=focus==="all"?Object.keys(PTS):[...new Set([].concat.apply([],ROUTE[focus]))];
+  const onlyNW=pts.every(k=>{const p=PTS[k];return p.lon<=B_NW.lon1&&p.lat>=B_NW.lat0;});
+  if(onlyNW){ /* 리장–샹그릴라 일대만 확대 */
+    const ps=pts.map(k=>PTS[k]);
+    let lo0=Math.min(...ps.map(p=>p.lon)),lo1=Math.max(...ps.map(p=>p.lon)),la0=Math.min(...ps.map(p=>p.lat)),la1=Math.max(...ps.map(p=>p.lat));
+    const H=Math.round(W*1.0);
+    let cw=(lo1-lo0)*0.9, ch=(la1-la0); const span=Math.max(cw,ch)*1.7+0.12;
+    const cx=(lo0+lo1)/2, cy=(la0+la1)/2;
+    const B={lon0:cx-span/0.9/2,lon1:cx+span/0.9/2,lat0:cy-span/2,lat1:cy+span/2};
+    const L=routeLayer(focus,B,{x:0,y:0,w:W,h:H},{grid:false,zoom:true,labels:"all"});
+    return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="이동 경로 확대 지도">${L.svg}<text class="mgt" x="${W-12}" y="${H-8}" text-anchor="end">리장–샹그릴라 일대 확대</text></svg>`;
+  }
+  const H=380;
+  const main=routeLayer(focus,B_ALL,{x:0,y:0,w:W,h:H},{grid:true,labels:["KMG","KMGAP","SL","LJ","SGL"]});
+  /* 확대 인셋: 우상단 */
+  const ix=188,iy=12,iw=160,ih=200;
+  const ins=routeLayer(focus,B_NW,{x:ix,y:iy,w:iw,h:ih},{grid:false,zoom:true,labels:"all"});
+  const bx1=main.px(B_NW.lon0),bx2=main.px(B_NW.lon1),by1=main.py(B_NW.lat1),by2=main.py(B_NW.lat0);
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="일정 경로 지도">
+    <defs><clipPath id="ic${focus}"><rect x="${ix}" y="${iy}" width="${iw}" height="${ih}" rx="8"/></clipPath></defs>
+    ${main.svg}
+    <rect x="${bx1}" y="${by1}" width="${bx2-bx1}" height="${by2-by1}" fill="none" stroke="var(--sub)" stroke-dasharray="3 3"/>
+    <line x1="${bx2}" y1="${by1}" x2="${ix}" y2="${iy}" stroke="var(--sub)" stroke-dasharray="3 3"/>
+    <line x1="${bx2}" y1="${by2}" x2="${ix}" y2="${iy+ih}" stroke="var(--sub)" stroke-dasharray="3 3"/>
+    <rect x="${ix}" y="${iy}" width="${iw}" height="${ih}" rx="8" fill="var(--paper)" stroke="var(--sub)"/>
+    <g clip-path="url(#ic${focus})" class="inset">${ins.svg}</g>
+    
+  </svg>`;
+}
+function legendHTML(focus){
+  const items = focus==="all" ? TRIP.filter(d=>ROUTE[d.id].some(s=>s.length>1)) : TRIP.filter(d=>d.id===focus);
+  return `<div class="legend">${items.map(d=>`<span><i style="background:${DAYCOL[d.id]}"></i>${d.tab} ${esc(d.short)}</span>`).join("")}<span><i class="dash"></i>항공·열차 이동</span></div>`;
+}
+
+/* ---------- 장소 링크 ---------- */
+function placeHTML(p){
+  const q=p.info||p.ko.replace(/\(.*?\)/g,"").replace(/ (숙박|야경|이동.*)$/,"").trim();
+  return `<div class="place"><strong>${esc(p.ko)}</strong>${p.cn?`<span class="cn">${esc(p.cn)}</span>`:""}
+    <div class="lk"><span class="lkt">지도</span><a href="${gmap(p.g)}" target="_blank" rel="noopener">Google</a><a href="${amap(p.a)}" target="_blank" rel="noopener">고덕</a></div>
+    <div class="lk"><span class="lkt">정보</span><a href="${naver(q+" 여행")}" target="_blank" rel="noopener">네이버</a><a href="${wiki(q)}" target="_blank" rel="noopener">위키백과</a>${p.cn?`<a href="${baike(p.cn.split(" ")[0])}" target="_blank" rel="noopener">바이두</a>`:""}</div></div>`;
+}
+
+/* ---------- 시간대 ---------- */
+function slotIdxNow(){const h=new Date().getHours();return h<12?0:h<18?1:2}
+function slotHTML(s,i,open){
+  const places = s.places.length ? s.places.map(placeHTML).join("") : "—";
+  const items = s.items.length ? `<ul>${s.items.map(x=>`<li>${esc(x)}</li>`).join("")}</ul>` : "—";
+  const wear = `<dl class="wear">${Object.entries(s.wear).map(([k,v])=>`<dt>${k}</dt><dd>${esc(v)}</dd>`).join("")}</dl>`;
+  return `<details class="slot ${s.k}" id="slot${i}" ${open?"open":""}>
+    <summary><h3>${s.name}</h3><span class="time">${esc(s.time)}</span><span class="sumtemp">${esc(s.weather.t)}</span></summary>
+    <div class="rows">
+      <div class="row"><div class="k">날씨</div><div class="v weather-line"><span class="temp">${esc(s.weather.t)}</span>${esc(s.weather.d)}</div></div>
+      <div class="row"><div class="k">어디</div><div class="v">${places}</div></div>
+      <div class="row"><div class="k">관광지 정보</div><div class="v">${esc(s.info)}</div></div>
+      ${(s.opt||[]).length?`<div class="row"><div class="k">선택관광</div><div class="v">${s.opt.map(id=>{const o=OPT.find(x=>x.id===id);return `<a class="optchip" href="#" data-goopt="${id}">${esc(o.name)} · USD ${o.usd} · ${esc(o.time)}</a>`}).join("")}</div></div>`:""}
+      <div class="row"><div class="k">준비물</div><div class="v">${items}</div></div>
+      <div class="row"><div class="k">착장 가이드</div><div class="v">${wear}</div></div>
+    </div></details>`;
+}
+
+function dayHTML(d,idx){
+  const maxAlt=Math.max(...d.alt.map(a=>a[1]));
+  const isToday=d.date===kstToday(), nowI=slotIdxNow();
+  const fc=(FORECAST[d.id]||[]).map(([n,u])=>`<a href="${u}" target="_blank" rel="noopener">${esc(n)}</a>`).join("");
+  const hasRoute=ROUTE[d.id].some(s=>s.length>1);
+  return `<div class="panel" role="tabpanel" id="p-${d.id}">
+    <div class="day-head">
+      <div class="date">${idx+1}일차 · ${d.date.slice(5).replace("-",".")} (${d.tab.split(" ")[1]})</div>
+      <h2>${esc(d.title)}</h2>
+      <div class="facts"><span>기온<b>${esc(d.lowHigh)}</b></span><span>최고 고도<b>${maxAlt.toLocaleString()}m</b></span><span>숙박<b>${esc(d.stay)}</b></span></div>
+    </div>
+    ${d.fc?`<div class="fcbox"><b>현지 예보</b> ${esc(d.fc)}<small>墨迹天气 10/1 조회 · 7일 이후는 참고용, 출발 2–3일 전 재확인</small></div>`:""}
+    <div class="daytip">${d.tip}</div>
+    <div class="slotnav">${d.slots.map((s,i)=>`<button type="button" data-slot="${i}" class="${isToday&&i===nowI?"now":""}">${s.name}</button>`).join("")}</div>
+    ${d.slots.map((s,i)=>slotHTML(s,i, isToday ? i===nowI : true)).join("")}
+    ${hasRoute?`<details class="card"><summary>오늘의 이동 경로</summary><div class="mapbox">${routeSVG(d.id)}${legendHTML(d.id)}</div></details>`:""}
+    <details class="card"><summary>오늘의 고도 변화</summary><div class="alt">${altSVG(d.alt)}<div class="alt-title">붉은 띠 = 3,000m 이상 고산 구간 (단위 m)</div></div></details>
+    <div class="forecast">실시간 예보 (墨迹天气 · 중국에서도 접속됨)<div class="fl">${fc}</div></div>
+    <div class="swipehint">좌우로 밀어서 다른 날 보기</div>
+  </div>`;
+}
+
+function routeHTML(){
+  const all=[];
+  TRIP.forEach(d=>d.slots.forEach(s=>s.places.forEach(p=>{if(p.cn&&!all.some(x=>x.ko===p.ko))all.push({...p,day:d.tab});})));
+  return `<div class="panel" role="tabpanel" id="p-route">
+    <div class="day-head"><div class="date">6일 전체</div><h2>일정 경로 한눈에 보기</h2></div>
+    <div class="mapbox big">${routeSVG("all")}${legendHTML("all")}</div>
+    <p class="note">위치 관계를 보여 주는 개략도입니다(실제 도로가 아닌 직선·곡선). 인천–쿤밍 왕복 항공 약 4시간 30분은 지도 밖입니다.</p>
+    <h3 class="sec">관광지 바로가기</h3>
+    ${all.map(p=>`<div class="group pl"><div class="pday">${p.day}</div>${placeHTML(p)}</div>`).join("")}
+  </div>`;
+}
+
+function loadOpt(){try{return JSON.parse(localStorage.getItem(OPTKEY)||"{}")}catch(e){return{}}}
+function saveOpt(o){try{localStorage.setItem(OPTKEY,JSON.stringify(o))}catch(e){}}
+function optSum(st){return OPT.filter(o=>st[o.id]).reduce((a,o)=>a+o.usd,0)}
+function optHTML(){
+  const st=loadOpt(), all=OPT.reduce((a,o)=>a+o.usd,0);
+  return `<div class="panel" role="tabpanel" id="p-opt">
+    <div class="day-head"><div class="date">하나투어 상품 페이지 기준 · 1인 요금</div><h2>선택관광</h2></div>
+    <div class="optsum"><div><small>참여 예정 합계 (1인)</small><b id="optTotal">USD ${optSum(st)}</b></div><div class="r"><small>전부 참여 시</small>USD ${all}</div></div>
+    <p class="note">‘참여 예정’을 체크하면 합계가 계산되고 이 기기에 저장됩니다. 일자 표시는 이 가이드의 추정 일정 기준이라, 실제 진행 날짜는 현지 가이드 안내를 따르세요.</p>
+    ${OPT.map(o=>{const days=TRIP.filter(d=>d.slots.some(x=>(x.opt||[]).includes(o.id)));
+      return `<div class="group opt" id="opt-${o.id}">
+      <div class="opthead"><div><div class="pday">${esc(o.city)}${days.length?` · ${days.map(d=>d.tab).join(", ")} 예정`:""}${o.md?' <span class="md">MD추천</span>':""}</div><h3>${esc(o.name)}</h3></div>
+        <div class="price">USD ${o.usd}<small>${esc(o.time)}</small></div></div>
+      <div class="row"><div class="k">내용</div><div class="v">${esc(o.what)}</div></div>
+      <div class="row"><div class="k">미참여 시</div><div class="v">${esc(o.alt)}</div></div>
+      <div class="row"><div class="k">판단 포인트</div><div class="v">${esc(o.tip)}</div></div>
+      ${o.place?`<div class="row"><div class="k">위치·정보</div><div class="v">${placeHTML(o.place)}</div></div>`:""}
+      <label class="optpick"><input type="checkbox" data-opt="${o.id}" ${st[o.id]?"checked":""}><span>참여 예정</span></label>
+    </div>`}).join("")}
+  </div>`;
+}
+function bindOpt(){
+  document.querySelectorAll('input[data-opt]').forEach(cb=>cb.addEventListener("change",()=>{
+    const st=loadOpt(); st[cb.dataset.opt]=cb.checked; saveOpt(st);
+    document.getElementById("optTotal").textContent="USD "+optSum(st);
+  }));
+}
+const KEY="yunnan1007-check";
+function loadChecks(){try{return JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){return{}}}
+function saveChecks(o){try{localStorage.setItem(KEY,JSON.stringify(o))}catch(e){}}
+function checkHTML(){
+  const st=loadChecks(); let total=0,done=0;
+  const groups=CHECK.map((g,gi)=>`<div class="group"><h3>${esc(g.g)}</h3>${g.items.map((it,ii)=>{
+    const id=`c${gi}-${ii}`; total++; const on=!!st[id]; if(on)done++;
+    return `<label class="${on?"done":""}"><input type="checkbox" data-id="${id}" ${on?"checked":""}><span>${esc(it[0])}${it[1]?`<small>${esc(it[1])}</small>`:""}</span></label>`;
+  }).join("")}</div>`).join("");
+  return `<div class="panel check" role="tabpanel" id="p-check">
+    <h2>짐 체크</h2><div class="bar"><i id="barfill" style="width:${total?done/total*100:0}%"></i></div>
+    <div class="progress" id="prog">${done} / ${total} 완료 · 이 브라우저에 저장됩니다</div>
+    ${groups}<button class="reset" type="button" id="resetBtn">체크 모두 해제</button></div>`;
+}
+function bindCheck(){
+  document.querySelectorAll('.group input').forEach(cb=>cb.addEventListener("change",()=>{
+    const st=loadChecks(); st[cb.dataset.id]=cb.checked; saveChecks(st);
+    cb.closest("label").classList.toggle("done",cb.checked);
+    const all=document.querySelectorAll('.group input'),n=[...all].filter(x=>x.checked).length;
+    $("#prog").textContent=`${n} / ${all.length} 완료 · 이 브라우저에 저장됩니다`;
+    $("#barfill").style.width=(n/all.length*100)+"%";
+  }));
+  $("#resetBtn").addEventListener("click",()=>{saveChecks({});render("check");});
+}
+
+function kstToday(){const d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
+
+let current="d1";
+function render(id){
+  current=id;
+  const today=kstToday();
+  $("#tabrow").innerHTML = TRIP.map((d,i)=>`<button class="tab" role="tab" aria-selected="${d.id===id}" data-id="${d.id}" aria-label="${i+1}일차 ${d.tab}">${d.date===today?'<i class="today"></i>':''}<span class="n">${d.date.slice(8).replace(/^0/,"")}</span><small>${esc(d.short)}</small></button>`).join("")
+    + `<button class="tab" role="tab" aria-selected="${id==="route"}" data-id="route"><span class="n">⌖</span><small>경로</small></button>`
+    + `<button class="tab" role="tab" aria-selected="${id==="opt"}" data-id="opt"><span class="n">＋</span><small>선택</small></button>`
+    + `<button class="tab" role="tab" aria-selected="${id==="check"}" data-id="check"><span class="n">✓</span><small>짐</small></button>`;
+  const d=TRIP.find(x=>x.id===id);
+  if(id==="check"){$("#main").innerHTML=checkHTML();bindCheck();$("#curTitle").textContent="짐 체크";}
+  else if(id==="route"){$("#main").innerHTML=routeHTML();$("#curTitle").textContent="전체 경로";}
+  else if(id==="opt"){$("#main").innerHTML=optHTML();bindOpt();$("#curTitle").textContent="선택관광";}
+  else{$("#main").innerHTML=dayHTML(d,TRIP.indexOf(d));$("#curTitle").textContent=`${d.tab} · ${d.short}`;}
+  const i=IDS.indexOf(id); $("#prevBtn").disabled=i<=0; $("#nextBtn").disabled=i>=IDS.length-1;
+  document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>go(b.dataset.id)));
+  document.querySelectorAll(".slotnav button").forEach(b=>b.addEventListener("click",()=>{
+    const el=document.getElementById("slot"+b.dataset.slot); el.open=true; el.scrollIntoView({behavior:"smooth",block:"start"});
+  }));
+  document.querySelectorAll("[data-goopt]").forEach(a=>a.addEventListener("click",e=>{
+    e.preventDefault(); go("opt"); const el=document.getElementById("opt-"+a.dataset.goopt); if(el) el.scrollIntoView();
+  }));
+  try{history.replaceState(null,"","#"+id)}catch(e){}
+}
+function go(id){render(id);window.scrollTo(0,0);}
+function step(k){const i=IDS.indexOf(current)+k; if(i>=0&&i<IDS.length) go(IDS[i]);}
+
+(function init(){ const _m=document.getElementById("main").innerHTML,_t=document.getElementById("tabrow").innerHTML; try{
+  const hash=location.hash.replace("#",""), today=kstToday();
+  const start = IDS.includes(hash) ? hash
+    : (TRIP.find(d=>d.date===today)||{}).id || (today < TRIP[0].date ? "check" : "d1");
+  try{const t=localStorage.getItem("yunnan-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}
+  render(start);
+  $("#prevBtn").addEventListener("click",()=>step(-1));
+  $("#nextBtn").addEventListener("click",()=>step(1));
+  $("#themeBtn").addEventListener("click",()=>{
+    const r=document.documentElement, cur=r.getAttribute("data-theme");
+    const dark = cur ? cur==="dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+    r.setAttribute("data-theme",dark?"light":"dark");
+    try{localStorage.setItem("yunnan-theme",dark?"light":"dark")}catch(e){}
+  });
+  /* 스와이프로 날짜 이동 (지도·그래프 위 제외) */
+  let sx=0,sy=0,ok=false;
+  const m=$("#main");
+  m.addEventListener("touchstart",e=>{const t=e.touches[0];sx=t.clientX;sy=t.clientY;ok=!e.target.closest(".mapbox,.alt,a,input")},{passive:true});
+  m.addEventListener("touchend",e=>{if(!ok)return;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;
+    if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.8) step(dx<0?1:-1);},{passive:true});
+  document.documentElement.classList.add("js-ok");
+ }catch(err){ document.getElementById("main").innerHTML=_m; document.getElementById("tabrow").innerHTML=_t; if(window.console) console.error(err); }
+})();
+</script>
+</body>
+</html>
